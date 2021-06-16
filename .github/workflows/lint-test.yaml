@@ -22,12 +22,11 @@ jobs:
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
-
-      - name: Run chart-testing (list-changed)
-        id: list-changed
-        uses: helm/chart-testing-action@v2.0.1
         with:
           config: .github/config/cf.yaml
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed 
         run: |
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then
