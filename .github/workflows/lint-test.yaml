@@ -28,6 +28,9 @@ jobs:
         run: |
           changed=$(ct list-changed --target-branch main)
           echo "${changed}"
+          for value in "${changed[@]}"; do 
+            printf "%-8s\n" "${value}"
+          done | column
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
