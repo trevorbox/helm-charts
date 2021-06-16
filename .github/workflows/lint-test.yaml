@@ -33,7 +33,6 @@ jobs:
 
           if [[ -n "$changed" ]]; then
             echo "::set-output name=is-changed::true"
-            echo "::set-output name=changed::${changed}"
           fi
 
       - name: Run chart-testing (lint)
