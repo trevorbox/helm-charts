@@ -28,7 +28,7 @@ jobs:
         run: |
           changed=$(ct list-changed --target-branch main)
 
-          echo "changed: ${changed[@]}""
+          echo "changed: ${changed[@]}"
 
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
