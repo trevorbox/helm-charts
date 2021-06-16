@@ -1,10 +1,12 @@
 # helm-charts
 
+Common charts used for many different projects.
+
 ## service-mesh-operator
 
-Installs the operator Subscriptions in Openshift for Service Mesh.
+Installs the Service Mesh operator Subscriptions in Openshift
 
-## installation
+### installation
 
 ```sh
 helm repo add trevorbox https://trevorbox.github.io/helm-charts
