@@ -1,7 +1,8 @@
 apiVersion: v2
 name: service-mesh-operators
 description: A chart for installing Service Mesh operators in Openshift
-
+maintainers:
+  - name: trevorbox
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
