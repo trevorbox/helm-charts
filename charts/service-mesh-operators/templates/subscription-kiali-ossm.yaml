@@ -2,7 +2,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: kiali-ossm
-  namespace: {{ .Values.subscriptions.kiali.namespace }}
+  # namespace: {{ .Values.subscriptions.kiali.namespace }}
 spec:
   channel: {{ .Values.subscriptions.kiali.channel }}
   installPlanApproval: {{ .Values.subscriptions.kiali.installPlanApproval }}
