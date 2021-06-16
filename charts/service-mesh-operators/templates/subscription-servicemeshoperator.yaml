@@ -2,7 +2,6 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: servicemeshoperator
-  # namespace: {{ .Values.subscriptions.servicemesh.namespace }}
 spec:
   channel: {{ .Values.subscriptions.servicemesh.channel }}
   installPlanApproval: {{ .Values.subscriptions.servicemesh.installPlanApproval }}
