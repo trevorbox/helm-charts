@@ -1,27 +1,33 @@
-# helm-charts
+# Helm Charts
 
 Common charts used for many different projects.
 
-## service-mesh-operator
+## Service Mesh Operators
 
-Installs the Service Mesh operator Subscriptions in Openshift
+Installs the following Subscriptions in Openshift:
 
-### installation
+* Openshift Service Mesh
+* Elasticsearch
+* Jaeger
+* Kiali
+
+### Installation
 
 ```sh
 helm repo add trevorbox https://trevorbox.github.io/helm-charts
+helm repo update
 helm upgrade --install service-mesh-operators trevorbox/service-mesh-operators \
   --namespace openshift-operators-redhat \
   --create-namespace
 ```
 
-## local test
+### Test
 
 ```sh
 helm upgrade -i service-mesh-operators service-mesh-operators/ -n openshift-operators-redhat --create-namespace
 ```
 
-### local packaging
+### Packaging
 
 ```sh
 helm package service-mesh-operators/
