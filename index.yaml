@@ -3,6 +3,18 @@ entries:
   service-mesh-operators:
   - apiVersion: v2
     appVersion: stable
+    created: "2021-06-16T23:34:38.741547241Z"
+    description: A chart for installing Service Mesh operators in Openshift
+    digest: 9bda96a82ef0e364dde71f8d0562b32313522e40c10780ae898011d6a04db8f1
+    maintainers:
+    - name: trevorbox
+    name: service-mesh-operators
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/service-mesh-operators-4.7.14/service-mesh-operators-4.7.14.tgz
+    version: 4.7.14
+  - apiVersion: v2
+    appVersion: stable
     created: "2021-06-16T20:31:00.044145803Z"
     description: A chart for installing Service Mesh operators in Openshift
     digest: 73b8ca3e225a0dced4139baacc37748430416fbf0af336382e9e6f9c2758b859
@@ -11,4 +23,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/service-mesh-operators-4.7.13/service-mesh-operators-4.7.13.tgz
     version: 4.7.13
-generated: "2021-06-16T20:31:00.044151303Z"
+generated: "2021-06-16T23:34:38.741554941Z"
