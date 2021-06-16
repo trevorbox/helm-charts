@@ -7,7 +7,7 @@ Installs the operator Subscriptions in Openshift for Service Mesh.
 ## installation
 
 ```sh
-helm repo add trevorbox https://trevorbox.github.io/helm-chart/
+helm repo add trevorbox https://trevorbox.github.io/helm-charts
 helm upgrade --install service-mesh-operators trevorbox/service-mesh-operators \
   --namespace openshift-operators-redhat \
   --create-namespace
