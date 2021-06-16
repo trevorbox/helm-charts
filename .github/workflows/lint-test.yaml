@@ -25,6 +25,7 @@ jobs:
 
       - name: Run chart-testing (list-changed)
         id: list-changed
+        uses: helm/chart-testing-action@v2.0.1
         with:
           config: .github/config/cf.yaml
         run: |
