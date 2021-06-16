@@ -25,6 +25,8 @@ jobs:
 
       - name: Run chart-testing (list-changed)
         id: list-changed
+        with:
+          config: .github/config/cf.yaml
         run: |
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then
