@@ -27,11 +27,13 @@ jobs:
         id: list-changed 
         run: |
           changed=$(ct list-changed --target-branch main)
-
-          echo "changed: ${changed[@]}"
+          
+          echo "Charts that changed:"
+          echo "${changed[@]}"
 
           if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
+            echo "::set-output name=is-changed::true"
+            echo "::set-output name=changed::${changed}"
           fi
 
       - name: Run chart-testing (lint)
@@ -39,7 +41,8 @@ jobs:
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.list-changed.outputs.is-changed == 'true'
 
       - name: Run chart-testing (install)
         run: ct install --target-branch main --excluded-charts service-mesh-operators
+        if: steps.list-changed.outputs.is-changed == 'true'
