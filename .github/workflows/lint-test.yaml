@@ -44,5 +44,5 @@ jobs:
         if: steps.list-changed.outputs.is-changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --target-branch main --excluded-charts service-mesh-operators,booknfo-istio
+        run: ct install --target-branch main --excluded-charts service-mesh-operators,bookinfo-istio
         if: steps.list-changed.outputs.is-changed == 'true'
