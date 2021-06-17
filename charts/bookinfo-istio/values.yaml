@@ -1,0 +1,6 @@
+gateway:
+  name: bookinfo-gateway
+  namespace: istio-system
+  selector:
+    istio: ingressgateway
+  host: example.com
