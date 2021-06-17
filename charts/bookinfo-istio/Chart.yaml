@@ -1,7 +1,10 @@
 apiVersion: v2
 name: bookinfo-istio
 description: Basic netowrking example for bookinfo with mTLS.
-
+maintainers:
+  - name: trevorbox
+sources:
+  - https://github.com/trevorbox/helm-charts
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
