@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   bookinfo:
   - apiVersion: v2
+    appVersion: v2.5.0
+    created: "2021-06-23T19:25:57.485796254Z"
+    description: An application for testing Istio.
+    digest: 893ab1f5075e56151285af6b77d93007c7055f0bbdf2fe3ffc00ee0a1961f1e3
+    maintainers:
+    - name: trevorbox
+    name: bookinfo
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-2.5.0/bookinfo-2.5.0.tgz
+    version: 2.5.0
+  - apiVersion: v2
     appVersion: 2.5.0
     created: "2021-06-17T19:06:39.20870219Z"
     description: An application for testing Istio.
@@ -17,6 +31,20 @@ entries:
     version: 0.0.1
   bookinfo-istio:
   - apiVersion: v2
+    appVersion: v2.5.0
+    created: "2021-06-23T19:25:57.607867043Z"
+    description: Basic netowrking example for bookinfo with mTLS.
+    digest: 2413075cfddc7f3fb9d993723bc114c860baad204810eea95d96394739b79af5
+    maintainers:
+    - name: trevorbox
+    name: bookinfo-istio
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-istio-2.5.0/bookinfo-istio-2.5.0.tgz
+    version: 2.5.0
+  - apiVersion: v2
     appVersion: 2.5.0
     created: "2021-06-17T19:06:39.341850793Z"
     description: Basic netowrking example for bookinfo with mTLS.
@@ -31,6 +59,20 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-istio-0.1.0/bookinfo-istio-0.1.0.tgz
     version: 0.1.0
   service-mesh-operators:
+  - apiVersion: v2
+    appVersion: v4.7.17
+    created: "2021-06-23T19:25:57.742221931Z"
+    description: A chart for installing Service Mesh operators in Openshift
+    digest: 80a220e141ffda0670e7dcd4044cf9ff89f60f53ad4cbd9a7d2777af77ca3c52
+    maintainers:
+    - name: trevorbox
+    name: service-mesh-operators
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/service-mesh-operators-4.7.17/service-mesh-operators-4.7.17.tgz
+    version: 4.7.17
   - apiVersion: v2
     appVersion: 4.7.16
     created: "2021-06-17T19:06:39.461270538Z"
@@ -79,4 +121,19 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/service-mesh-operators-4.7.13/service-mesh-operators-4.7.13.tgz
     version: 4.7.13
-generated: "2021-06-17T19:06:39.461441041Z"
+  smcp:
+  - apiVersion: v2
+    appVersion: v2.5.0
+    created: "2021-06-23T19:25:57.899448405Z"
+    description: A simplified Service Mesh Control Plane (SMCP) deployment example.
+    digest: 600078dabf99549665ea386f5653eddcd2960199e6d9094297acb4fdf287ebe2
+    maintainers:
+    - name: trevorbox
+    name: smcp
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
+    version: 2.5.0
+generated: "2021-06-23T19:25:57.899487505Z"
