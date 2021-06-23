@@ -1,7 +1,8 @@
 route:
   name: api
 smcp:
-  productionMode: false # Configures Jaeger storage to use Memory or Elasticsearch
+  # Configures Jaeger storage to use Memory or Elasticsearch
+  productionMode: false
   gateways:
     enabled: true
     egress:
