@@ -1,6 +1,6 @@
 apiVersion: v2
-name: bookinfo-istio
-description: Basic netowrking example for bookinfo with mTLS.
+name: smcp
+description: A simplified Service Mesh Control Plane (SMCP) deployment example.
 maintainers:
   - name: trevorbox
 sources:

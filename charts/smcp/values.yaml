@@ -1,0 +1,25 @@
+route:
+  name: api
+smcp:
+  # Configures Jaeger storage to use Memory or Elasticsearch
+  productionMode: false
+  gateways:
+    enabled: true
+    egress:
+      enabled: false
+    ingress:
+      enabled: true
+      runtime:
+        container:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+            limits: {}
+        deployment:
+          autoScaling:
+            enabled: true
+    additionalIngress: {}
+    additionalEgress: {}
+    openshiftRoute:
+      enabled: false

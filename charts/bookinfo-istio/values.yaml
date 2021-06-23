@@ -4,3 +4,6 @@ gateway:
   selector:
     istio: ingressgateway
   host: example.com
+smcp:
+  name: full-install
+  namespace: istio-system
