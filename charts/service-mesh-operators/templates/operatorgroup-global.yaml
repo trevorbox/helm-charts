@@ -1,5 +1,8 @@
+{{- with .Values.operatorGroup }}
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: global
+  namespace: {{ .namespace }}
 spec: {}
+{{- end }}

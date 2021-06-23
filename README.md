@@ -11,8 +11,6 @@ Installs the following Subscriptions in Openshift:
 * Jaeger
 * Kiali
 
-### Installation
-
 ```sh
 helm repo add trevorbox https://trevorbox.github.io/helm-charts
 helm repo update
@@ -21,15 +19,38 @@ helm upgrade --install service-mesh-operators trevorbox/service-mesh-operators \
   --create-namespace
 ```
 
-### Test
+## Service Mesh Control Plane (SMCP)
+
+This is a simplified service mesh control plane deployment example. Consider this a starting point to [pull](https://helm.sh/docs/helm/helm_pull/) from locally and repackage for your needs.
 
 ```sh
-helm upgrade -i service-mesh-operators service-mesh-operators/ -n openshift-operators-redhat --create-namespace
+helm repo add trevorbox https://trevorbox.github.io/helm-charts
+helm repo update
+helm upgrade --install smcp trevorbox/smcp \
+  --namespace istio-system
 ```
 
-### Packaging
+## Bookinfo Istio Configurations
+
+Basic Istio configurations for Bookinfo.
 
 ```sh
-helm package service-mesh-operators/
-helm repo index --url https://trevorbox.github.io/helm-chart/ .
+helm repo add trevorbox https://trevorbox.github.io/helm-charts
+helm repo update
+helm upgrade --install bookinfo trevorbox/bookinfo-istio \
+  --namespace bookinfo \
+  --set gateway.host=$(oc get route api -o jsonpath={.spec.host} -n istio-system) \
+  --create-namespace
+```
+
+## Bookinfo
+
+An application for testing Istio.
+
+```sh
+helm repo add trevorbox https://trevorbox.github.io/helm-charts
+helm repo update
+helm upgrade --install bookinfo trevorbox/bookinfo \
+  --namespace bookinfo \
+  --create-namespace
 ```

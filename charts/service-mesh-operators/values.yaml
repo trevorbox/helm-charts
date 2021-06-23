@@ -2,12 +2,18 @@ subscriptions:
   elasticsearch:
     installPlanApproval: Automatic
     channel: stable
+    namespace: openshift-operators-redhat
   jaeger:
     installPlanApproval: Automatic
     channel: stable
+    namespace: openshift-operators
   kiali:
     installPlanApproval: Automatic
     channel: stable
+    namespace: openshift-operators
   servicemesh:
     installPlanApproval: Automatic
     channel: stable
+    namespace: openshift-operators
+operatorGroup:
+  namespace: openshift-operators-redhat
