@@ -27,7 +27,8 @@ This is a simplified service mesh control plane deployment example. Consider thi
 helm repo add trevorbox https://trevorbox.github.io/helm-charts
 helm repo update
 helm upgrade --install smcp trevorbox/smcp \
-  --namespace istio-system
+  --namespace istio-system \
+  --create-namespace
 ```
 
 ## Bookinfo Istio Configurations
