@@ -38,7 +38,7 @@ Basic Istio configurations for Bookinfo.
 ```sh
 helm repo add trevorbox https://trevorbox.github.io/helm-charts
 helm repo update
-helm upgrade --install bookinfo trevorbox/bookinfo-istio \
+helm upgrade --install bookinfo-istio trevorbox/bookinfo-istio \
   --namespace bookinfo \
   --set gateway.host=$(oc get route api -o jsonpath={.spec.host} -n istio-system) \
   --create-namespace
