@@ -3,8 +3,6 @@ apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
   name: ossm-2-5
-  annotations:
-    argocd.argoproj.io/sync-wave: '-1'
 spec:
   version: v2.5
   mode: ClusterWide
