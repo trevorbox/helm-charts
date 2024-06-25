@@ -17,6 +17,16 @@ entries:
     version: 2.5.0
   - apiVersion: v2
     appVersion: 2.4.0
+    created: "2024-06-25T17:46:07.991423798Z"
+    description: A Helm chart for Kubernetes
+    digest: 44a31d553af83e90f570253381b503047f01b11cf12077e91543c769fa918e52
+    name: bookinfo
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-2.4.1/bookinfo-2.4.1.tgz
+    version: 2.4.1
+  - apiVersion: v2
+    appVersion: 2.4.0
     created: "2024-06-25T16:25:43.955325393Z"
     description: A Helm chart for Kubernetes
     digest: ca480822ea8a717249faeb5a8d6450e8249ff860110656d86569fabbcfeedbb1
@@ -67,6 +77,61 @@ entries:
     type: application
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-istio-0.1.0/bookinfo-istio-0.1.0.tgz
+    version: 0.1.0
+  golang-ex:
+  - apiVersion: v2
+    appVersion: v1
+    created: "2024-06-25T17:46:08.115331486Z"
+    description: A Helm chart for Kubernetes
+    digest: ccd835c0c73cdbf0c871f69bdd99f3a14f21aa3ffaf819d0a6025b33b757842d
+    name: golang-ex
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/golang-ex-0.1.0/golang-ex-0.1.0.tgz
+    version: 0.1.0
+  grafana:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T17:46:08.260639652Z"
+    description: A Helm chart for Kubernetes
+    digest: b493e355cc8173cef78be1ab0a04fa0e7f1234dca717dc4827aaac225deea178
+    name: grafana
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
+    version: 0.1.0
+  istio-member-namespaces:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T17:46:08.389802016Z"
+    description: A Helm chart for Kubernetes
+    digest: e45eef4bcf236cecb2c1705f3464baa98f0b2e2fedc22cf5c1cf397bbe8a8fe0
+    name: istio-member-namespaces
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.1.0/istio-member-namespaces-0.1.0.tgz
+    version: 0.1.0
+  nginx-echo-headers:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T17:46:08.513033068Z"
+    description: A Helm chart for Kubernetes
+    digest: 1531adde5b85b60382df55154a5fa17c2d11d086749755f86bddfa98f7819e0f
+    name: nginx-echo-headers
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/nginx-echo-headers-0.1.0/nginx-echo-headers-0.1.0.tgz
+    version: 0.1.0
+  openshift-oauth-proxy:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T17:46:08.631241516Z"
+    description: A Helm chart for Kubernetes
+    digest: 7e4728e573660e0a5273d5ee5c3920ae10e2bec58373c441586fda3a4c68197f
+    name: openshift-oauth-proxy
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.0/openshift-oauth-proxy-0.1.0.tgz
     version: 0.1.0
   service-mesh-operators:
   - apiVersion: v2
@@ -146,4 +211,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-25T16:25:43.955364407Z"
+generated: "2024-06-25T17:46:08.631277824Z"
