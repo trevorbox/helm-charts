@@ -134,6 +134,20 @@ entries:
     version: 0.1.0
   istio-gateway:
   - apiVersion: v2
+    appVersion: 1.18.5
+    created: "2024-06-25T18:42:57.368222045Z"
+    dependencies:
+    - name: gateway
+      repository: https://istio-release.storage.googleapis.com/charts
+      version: 1.18.5
+    description: A Helm chart for Kubernetes
+    digest: 5889a771874a09b4eda0306caace07f678f19f4796c42da2355827c07726d820
+    name: istio-gateway
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-gateway-1.18.5/istio-gateway-1.18.5.tgz
+    version: 1.18.5
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-06-25T18:31:19.951987462Z"
     dependencies:
@@ -258,4 +272,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-25T18:31:19.952058676Z"
+generated: "2024-06-25T18:42:57.368280414Z"
