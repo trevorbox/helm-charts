@@ -1,0 +1,10 @@
+apiVersion: maistra.io/v1
+kind: ServiceMeshMemberRoll
+metadata:
+  name: default
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
+spec:
+  memberSelectors: 
+    - matchLabels:
+        {{- .Values.namespaceMemberSelector | toYaml | nindent 8 }}
