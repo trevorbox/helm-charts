@@ -81,6 +81,16 @@ entries:
   golang-ex:
   - apiVersion: v2
     appVersion: v1
+    created: "2024-06-25T18:31:19.65134966Z"
+    description: A Helm chart for Kubernetes
+    digest: a4a28adbc348c22a030f8c3ac5fba53dd4bb42287ff27efbb34d5b586c04c77b
+    name: golang-ex
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/golang-ex-0.1.1/golang-ex-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v1
     created: "2024-06-25T17:46:08.115331486Z"
     description: A Helm chart for Kubernetes
     digest: ccd835c0c73cdbf0c871f69bdd99f3a14f21aa3ffaf819d0a6025b33b757842d
@@ -88,6 +98,17 @@ entries:
     type: application
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/golang-ex-0.1.0/golang-ex-0.1.0.tgz
+    version: 0.1.0
+  golang-ex-istio:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T18:31:19.738794018Z"
+    description: A Helm chart for Kubernetes
+    digest: a3cfe1f90e8426bedc877ea19bc6f23d39bd3b48b79db91743e28db6a631e983
+    name: golang-ex-istio
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/golang-ex-istio-0.1.0/golang-ex-istio-0.1.0.tgz
     version: 0.1.0
   grafana:
   - apiVersion: v2
@@ -99,6 +120,32 @@ entries:
     type: application
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/grafana-0.1.0/grafana-0.1.0.tgz
+    version: 0.1.0
+  grafana-istio:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T18:31:19.843761516Z"
+    description: A Helm chart for Kubernetes
+    digest: ad067d439acdec085716ab0471eb8b82eda7266af56206bfe7ffca2ca4c780c1
+    name: grafana-istio
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-0.1.0/grafana-istio-0.1.0.tgz
+    version: 0.1.0
+  istio-gateway:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T18:31:19.951987462Z"
+    dependencies:
+    - name: gateway
+      repository: https://istio-release.storage.googleapis.com/charts
+      version: ~1.18.5
+    description: A Helm chart for Kubernetes
+    digest: 907a3e8a1bdb516466a86ca053b212b68cf165da84dd31dd9feabb89662e707d
+    name: istio-gateway
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-gateway-0.1.0/istio-gateway-0.1.0.tgz
     version: 0.1.0
   istio-member-namespaces:
   - apiVersion: v2
@@ -211,4 +258,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-25T17:46:08.631277824Z"
+generated: "2024-06-25T18:31:19.952058676Z"
