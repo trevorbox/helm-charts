@@ -172,6 +172,17 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.1.0/istio-member-namespaces-0.1.0.tgz
     version: 0.1.0
+  kiali:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-25T19:36:02.794933005Z"
+    description: A Helm chart for Kubernetes
+    digest: 18456943a58d09dd56f81c95cad255dbf747938269f85bc8fa1a4cf2603f6ee1
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/kiali-0.1.0/kiali-0.1.0.tgz
+    version: 0.1.0
   nginx-echo-headers:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -314,4 +325,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-25T19:07:08.468722805Z"
+generated: "2024-06-25T19:36:02.795007054Z"
