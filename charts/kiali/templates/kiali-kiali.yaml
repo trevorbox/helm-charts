@@ -57,7 +57,7 @@ spec:
       config_map_name: istio-{{ .Values.smcp.name }}
       istio_sidecar_injector_config_map_name: istio-sidecar-injector-{{ .Values.smcp.name }}
       istiod_deployment_name: istiod-{{ .Values.smcp.name }}
-      url_service_version: 'http://istiod-istio-{{ .Values.smcp.name }}.{{ .Release.Namespace }}:15014/version'
+      url_service_version: 'http://istiod-{{ .Values.smcp.name }}.{{ .Release.Namespace }}:15014/version'
       root_namespace: {{ .Release.Namespace }}
       component_status:
         enabled: true
