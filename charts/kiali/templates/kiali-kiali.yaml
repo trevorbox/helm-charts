@@ -11,8 +11,6 @@ spec:
       - "^openshift.*"
       - "^ibm.*"
       - "^kiali-operator"
-      include:
-      - {{ .Release.Namespace }}
       label_selector_include: {{ .Values.namespaceMemberSelector | quote }}
   auth:
     strategy: openshift
