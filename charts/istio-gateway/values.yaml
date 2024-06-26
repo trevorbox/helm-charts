@@ -33,3 +33,6 @@ gateway:
 
   autoscaling:
     enabled: false
+
+  labels:
+    maistra.io/expose-route: "true"
