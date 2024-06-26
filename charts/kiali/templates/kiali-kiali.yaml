@@ -69,13 +69,9 @@ spec:
           is_proxy: true
           namespace: istio-ingress
     prometheus:
-      auth:
-        insecure_skip_verify: true
-        type: bearer
-        use_kiali_token: true
-      query_scope:
-        mesh_id: {{ .Release.Namespace }}/{{ .Values.smcp.name }}
-      url: {{ .Values.prometheus.url }}
+    {{- with .Values.prometheus }}
+      {{- . | toYaml | nindent 6 }}
+    {{- end }}
     tracing:
       query_timeout: 30
       enabled: true
