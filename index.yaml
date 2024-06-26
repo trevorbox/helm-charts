@@ -175,6 +175,16 @@ entries:
   kiali:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-06-26T21:16:36.623676342Z"
+    description: A Helm chart for Kubernetes
+    digest: 7c6b72357c2a439bd687785fead6dd9a071682fde33e0be4e697a0618243cf56
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/kiali-0.1.1/kiali-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-06-25T19:36:02.794933005Z"
     description: A Helm chart for Kubernetes
     digest: 18456943a58d09dd56f81c95cad255dbf747938269f85bc8fa1a4cf2603f6ee1
@@ -339,4 +349,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-25T20:38:05.468188346Z"
+generated: "2024-06-26T21:16:36.62374485Z"
