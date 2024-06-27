@@ -16,3 +16,4 @@ prometheus:
   query_scope:
     mesh_id: istio-system/ossm-2-5
   url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
+replicas: 2

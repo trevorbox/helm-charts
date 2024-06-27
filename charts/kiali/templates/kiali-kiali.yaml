@@ -20,6 +20,7 @@ spec:
         memory: 256Mi
     logger:
       log_level: debug
+    replicas: {{ .Values.replicas }}
   external_services:
     custom_dashboards:
       namespace_label: kubernetes_namespace
