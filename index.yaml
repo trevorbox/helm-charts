@@ -269,6 +269,21 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.0/openshift-oauth-proxy-0.1.0.tgz
     version: 0.1.0
+  prometheus:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-02T23:59:56.029513294Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 25.22.0
+    description: A Helm chart for Kubernetes
+    digest: 1ecf2f6649e00142131395d39e036322f7008b2246a512af9728da7f4f97eb05
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/prometheus-0.1.0/prometheus-0.1.0.tgz
+    version: 0.1.0
   service-mesh-operators:
   - apiVersion: v2
     appVersion: v4.7.17
@@ -403,4 +418,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-06-27T17:59:03.127156982Z"
+generated: "2024-07-02T23:59:56.029568877Z"
