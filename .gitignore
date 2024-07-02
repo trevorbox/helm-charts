@@ -45,4 +45,3 @@ policy/
 # BATS
 _test/test_helper/
 
-charts/prometheus
