@@ -272,6 +272,20 @@ entries:
   prometheus:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-03T18:39:20.678522038Z"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 25.22.0
+    description: A Helm chart for Kubernetes
+    digest: 32d6dead7df331ee9bef6832c5a5fe096441176118614eece4cccad18ab28d1e
+    name: prometheus
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/prometheus-0.1.1/prometheus-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-02T23:59:56.029513294Z"
     dependencies:
     - name: prometheus
@@ -350,6 +364,20 @@ entries:
   smcp:
   - apiVersion: v2
     appVersion: v2.5.0
+    created: "2024-07-03T18:39:20.784105797Z"
+    description: A simplified Service Mesh Control Plane (SMCP) deployment example.
+    digest: 2b4ff82b2784ab039356d3d84d34d57d543bc474494e8b4059798b7878f07875
+    maintainers:
+    - name: trevorbox
+    name: smcp
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.5/smcp-2.5.5.tgz
+    version: 2.5.5
+  - apiVersion: v2
+    appVersion: v2.5.0
     created: "2024-06-25T20:38:05.46813692Z"
     description: A simplified Service Mesh Control Plane (SMCP) deployment example.
     digest: 26dfe0a1d33b0e4d1e8331c2c214fac1753dc332550759abcf9a6f4d39de0401
@@ -418,4 +446,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-07-02T23:59:56.029568877Z"
+generated: "2024-07-03T18:39:20.784196936Z"
