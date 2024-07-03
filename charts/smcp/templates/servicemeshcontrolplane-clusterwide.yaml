@@ -6,6 +6,7 @@ metadata:
 spec:
   version: {{ .Values.smcp.version }}
   mode: {{ .Values.smcp.mode }}
+  {{- if or (eq .Values.smcp.mode "ClusterWide") (.Values.tempo.enabled) }}
   meshConfig:
     {{- if eq .Values.smcp.mode "ClusterWide" }}
     discoverySelectors:
@@ -19,6 +20,7 @@ spec:
           service: {{ .Values.tempo.host }}
           port: 4317
     {{- end }}
+  {{- end }}
   tracing:
     sampling: 10000
     type: None
