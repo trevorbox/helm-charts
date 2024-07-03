@@ -1,3 +1,4 @@
+{{- if .Values.ossmconsole.enabled }}
 kind: OSSMConsole
 apiVersion: kiali.io/v1alpha1
 metadata:
@@ -9,3 +10,4 @@ spec:
     serviceName: 'kiali'
     serviceNamespace: {{ .Release.Namespace }}
     servicePort: '20001'
+{{- end }}

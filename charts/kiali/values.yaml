@@ -1,7 +1,9 @@
 smcp:
   name: ossm-2-5
 namespaceMemberSelector: istio.io/rev=ossm-2.5
-consoleLink: "https://kiali-istio-system.apps-crc.testing"
+consoleLink: 
+  enabled: true
+  route: "https://kiali-istio-system.apps-crc.testing"
 grafana:
   in_cluster_url: http://grafana-instance-service.istio-system.svc:3000
   url:
@@ -17,3 +19,5 @@ prometheus:
     mesh_id: istio-system/ossm-2-5
   url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
 replicas: 2
+ossmconsole:
+  enabled: true
