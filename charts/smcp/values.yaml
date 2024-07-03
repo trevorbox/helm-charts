@@ -3,5 +3,9 @@ namespaceMemberSelector:
 smcp:
   name: ossm-2-5
   accessLoggingEnabled: true
+  version: v2.5
+  mode: ClusterWide # MultiTenant
+  outboundPolicy: REGISTRY_ONLY # ALLOW_ANY
 tempo:
+  enabled: true
   host: tempo-minio-dev-distributor.tempo-system.svc.cluster.local

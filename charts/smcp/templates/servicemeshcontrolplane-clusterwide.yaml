@@ -2,19 +2,23 @@
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
-  name: ossm-2-5
+  name: {{ .Values.smcp.name }}
 spec:
-  version: v2.5
-  mode: ClusterWide
+  version: {{ .Values.smcp.version }}
+  mode: {{ .Values.smcp.mode }}
   meshConfig:
+    {{- if eq .Values.smcp.mode "ClusterWide" }}
     discoverySelectors:
       - matchLabels:
           {{- .Values.namespaceMemberSelector | toYaml | nindent 10 }}
+    {{- end }}
+    {{- if .Values.tempo.enabled }}
     extensionProviders:
       - name: tempo
         opentelemetry:
           service: {{ .Values.tempo.host }}
           port: 4317
+    {{- end }}
   tracing:
     sampling: 10000
     type: None
@@ -33,7 +37,7 @@ spec:
     networking:
       trafficControl:
         outbound:
-          policy: REGISTRY_ONLY # ALLOW_ANY
+          policy: {{ .Values.smcp.outboundPolicy }}
   gateways:
     enabled: false
     egress:
