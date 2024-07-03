@@ -8,6 +8,6 @@ prometheus:
   prometheus-node-exporter:
     enabled: false
   server:
-    securityContext: null
+    securityContext: null # TODO this does not work with subcharts https://github.com/helm/helm/pull/12879
     global:
       scrape_interval: 15s
