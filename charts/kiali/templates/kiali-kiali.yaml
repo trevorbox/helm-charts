@@ -6,7 +6,11 @@ spec:
   auth:
     strategy: openshift
   deployment:
-    cluster_wide_access: true
+    {{- with .Values.accessible_namespaces }}
+    accessible_namespaces:
+      {{- . | toYaml | nindent 6 }}
+    {{- end }}
+    cluster_wide_access: {{ .Values.cluster_wide_access }}
     image_pull_policy: ''
     ingress:
       enabled: true

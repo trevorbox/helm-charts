@@ -1,6 +1,5 @@
 smcp:
   name: ossm-2-5
-namespaceMemberSelector: istio.io/rev=ossm-2.5
 consoleLink: 
   enabled: true
   route: "https://kiali-istio-system.apps-crc.testing"
@@ -18,6 +17,12 @@ prometheus:
   query_scope:
     mesh_id: istio-system/ossm-2-5
   url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
-replicas: 2
+replicas: 1
 ossmconsole:
   enabled: true
+cluster_wide_access: true
+accessible_namespaces: # use when cluster_wide_access is false for multi tenant config
+  # - bookinfo
+  # - golang-ex
+  # - istio-ingress
+  # - nginx-echo-headers
