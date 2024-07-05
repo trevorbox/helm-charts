@@ -62,6 +62,7 @@ spec:
         - app_label: istio-ingressgateway
           is_core: true
           is_proxy: true
+          namespace: {{.Values.ingressgateway.namespace }}
     prometheus:
     {{- with .Values.prometheus }}
       {{- . | toYaml | nindent 6 }}
