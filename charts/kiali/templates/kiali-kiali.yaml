@@ -5,6 +5,10 @@ metadata:
 spec:
   auth:
     strategy: openshift
+  {{- with .Values.api }}
+  api:
+    {{- . | toYaml | nindent 4 }}
+  {{- end }}
   deployment:
     instance_name: {{ printf "kiali-%s-%s" .Values.smcp.name .Values.smcp.namespace | quote }}
     {{- with .Values.accessible_namespaces }}
