@@ -1,3 +1,4 @@
+{{- if .Values.userWorkloadAccess.enabled }}
 {{- range .Values.members }}
 ---
 apiVersion: networking.k8s.io/v1
@@ -15,4 +16,5 @@ spec:
   policyTypes:
   - Ingress
 ...
+{{- end }}
 {{- end }}

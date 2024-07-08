@@ -1,3 +1,4 @@
+{{- if .Values.userWorkloadAccess.enabled }}
 {{- range .Values.members }}
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -149,4 +150,5 @@ spec:
             VALUE = {{` {{ $value }} `}}
             LABELS = {{` {{ $labels }} `}}
 ...
+{{- end }}
 {{- end }}

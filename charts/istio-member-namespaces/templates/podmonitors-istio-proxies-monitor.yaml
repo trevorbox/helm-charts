@@ -1,3 +1,4 @@
+{{- if .Values.userWorkloadAccess.enabled }}
 {{- range .Values.members }}
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -43,4 +44,5 @@ spec:
       replacement: {{ printf "%s/%s" $.Values.smcp.namespace $.Values.smcp.name }}
       targetLabel: mesh_id
 ...
+{{- end }}
 {{- end }}

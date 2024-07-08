@@ -1,3 +1,4 @@
+{{- if .Values.userWorkloadAccess.enabled }}
 {{- range .Values.members }}
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -155,4 +156,5 @@ spec:
       expr: sum(kube_resourcequota{type="used"}) by (resource, namespace) / sum(kube_resourcequota{type="hard"}) by (resource,namespace) > 0.85
       for: 1m     
 ...
+{{- end }}
 {{- end }}

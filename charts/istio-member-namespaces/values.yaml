@@ -1,3 +1,5 @@
+userWorkloadAccess:
+  enabled: true
 members:
   - istio-ingress
 labels:
