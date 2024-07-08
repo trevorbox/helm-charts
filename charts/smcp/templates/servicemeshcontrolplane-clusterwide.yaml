@@ -52,6 +52,8 @@ spec:
     grafana:
       enabled: false
     kiali:
-      enabled: false
+      {{- with .Values.kiali }}
+      {{- . | toYaml | nindent 6 }}
+      {{- end }}
     prometheus:
       enabled: false
