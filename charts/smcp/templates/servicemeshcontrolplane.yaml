@@ -57,3 +57,8 @@ spec:
       {{- end }}
     prometheus:
       enabled: false
+  runtime:
+    components:
+      pilot:
+        deployment:
+          replicas: {{ .Values.istiod.replicas }}

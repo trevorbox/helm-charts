@@ -11,3 +11,5 @@ tempo:
   host: tempo-minio-dev-distributor.tempo-system.svc.cluster.local
 kiali:
   enabled: false
+istiod:
+  replicas: 2
