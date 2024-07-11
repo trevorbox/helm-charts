@@ -351,6 +351,16 @@ entries:
   openshift-oauth-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-11T19:47:23.128640571Z"
+    description: A Helm chart for Kubernetes
+    digest: eab737f17198ef840f0527c29facc85459db7bf98c87a2f837c54711c0a93b73
+    name: openshift-oauth-proxy
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.1/openshift-oauth-proxy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-06-25T17:46:08.631241516Z"
     description: A Helm chart for Kubernetes
     digest: 7e4728e573660e0a5273d5ee5c3920ae10e2bec58373c441586fda3a4c68197f
@@ -578,4 +588,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-07-11T19:34:51.046970894Z"
+generated: "2024-07-11T19:47:23.12874698Z"
