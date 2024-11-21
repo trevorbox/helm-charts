@@ -3,10 +3,10 @@ userWorkloadAccess:
 members:
   - istio-ingress
 labels:
-  istio.io/rev: ossm-2.5
+  istio.io/rev: ossm-2.6
   argocd.argoproj.io/managed-by: openshift-gitops
 annotations:
   argocd.argoproj.io/sync-options: Delete=false 
 smcp:
-  name: ossm-2-5
+  name: ossm-2-6
   namespace: istio-system

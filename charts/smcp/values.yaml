@@ -1,9 +1,9 @@
 namespaceMemberSelector:
-  istio.io/rev: ossm-2.5
+  istio.io/rev: ossm-2.6
 smcp:
-  name: ossm-2-5
+  name: ossm-2-6
   accessLoggingEnabled: true
-  version: v2.5
+  version: v2.6
   mode: ClusterWide # MultiTenant
   outboundPolicy: REGISTRY_ONLY # ALLOW_ANY
 tempo:
