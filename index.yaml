@@ -198,6 +198,16 @@ entries:
   istio-member-namespaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-21T20:17:20.820120457Z"
+    description: A Helm chart for Kubernetes
+    digest: 8e97fd84ade607fe2c24d1daf1d6d705de9edab1b6456140c719de55a5f45dff
+    name: istio-member-namespaces
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.2.0/istio-member-namespaces-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-08T17:41:56.172625633Z"
     description: A Helm chart for Kubernetes
     digest: 80a41067c7453ab1e4dabf3912c06e56e858b27162f901d706ddc1a0749791fe
@@ -217,6 +227,16 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.1.0/istio-member-namespaces-0.1.0.tgz
     version: 0.1.0
   kiali:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-21T20:17:20.93268333Z"
+    description: A Helm chart for Kubernetes
+    digest: cdc9f509dc3780a60f6e2597dbba74c8099063aaecda37083f6c62fca2cc16ae
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/kiali-1.1.0/kiali-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-07-08T19:27:58.889624006Z"
@@ -463,6 +483,20 @@ entries:
     version: 4.7.13
   smcp:
   - apiVersion: v2
+    appVersion: v2.6.0
+    created: "2024-11-21T20:17:21.012764011Z"
+    description: A simplified Service Mesh Control Plane (SMCP) deployment example.
+    digest: 6c150d68e2630271a1d9cd0f6d2b56ede7af5f4fa442fcdc30e0d6ccdfb8d992
+    maintainers:
+    - name: trevorbox
+    name: smcp
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.6.0/smcp-2.6.0.tgz
+    version: 2.6.0
+  - apiVersion: v2
     appVersion: v2.5.0
     created: "2024-07-09T22:45:17.513462298Z"
     description: A simplified Service Mesh Control Plane (SMCP) deployment example.
@@ -588,4 +622,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-07-11T19:47:23.12874698Z"
+generated: "2024-11-21T20:17:21.01294637Z"
