@@ -124,6 +124,16 @@ entries:
   grafana-istio:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-26T17:36:28.929605727Z"
+    description: A Helm chart for Kubernetes
+    digest: 22e643fe5f35495ba1ad7aead06a37a8b8e06d4f1bc8dad579965e10a37737d7
+    name: grafana-istio
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-0.1.3/grafana-istio-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-11T19:34:51.046836514Z"
     description: A Helm chart for Kubernetes
     digest: a1202457f84a435aef6053affc0c8de87de4f2fcfd25f18d714be83149b5e3bb
@@ -642,4 +652,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-11-26T16:59:15.043369738Z"
+generated: "2024-11-26T17:36:28.92979445Z"
