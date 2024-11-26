@@ -40,3 +40,4 @@ api:
   #   - "^ibm.*"
   #   - "^kiali-operator"
   #   label_selector_include: "kiali.io/member-of=istio-system"
+version: v1.73 # see https://kiali.io/docs/installation/installation-guide/prerequisites/#openshift-service-mesh-version-compatibility

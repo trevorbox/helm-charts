@@ -79,4 +79,4 @@ spec:
       use_grpc: true
   installation_tag: {{ printf "Kiali [%s-%s]" .Values.smcp.name .Values.smcp.namespace | quote }}
   istio_namespace: {{ .Values.smcp.namespace }}
-  version: default
+  version: {{ .Values.version }}
