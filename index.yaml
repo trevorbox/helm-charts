@@ -124,6 +124,16 @@ entries:
   grafana-istio:
   - apiVersion: v2
     appVersion: 1.20.8
+    created: "2024-11-26T23:30:06.531970997Z"
+    description: A Helm chart for Kubernetes
+    digest: ea9d40bee75960d766488b0a6821054687bbd6020ea57368937e9f7e0aa806fd
+    name: grafana-istio
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-1.20.10/grafana-istio-1.20.10.tgz
+    version: 1.20.10
+  - apiVersion: v2
+    appVersion: 1.20.8
     created: "2024-11-26T21:56:52.175967123Z"
     description: A Helm chart for Kubernetes
     digest: a8864512954607712ebc498dbe4205258fb4daaa98cab7c1b11d2bca6cacfe80
@@ -257,6 +267,16 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.1.0/istio-member-namespaces-0.1.0.tgz
     version: 0.1.0
   kiali:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-26T23:30:06.883324355Z"
+    description: A Helm chart for Kubernetes
+    digest: ea7c5682ad75f58bc283bf6e6803d20863893fb3338580738f493a6479d60479
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/kiali-1.1.3/kiali-1.1.3.tgz
+    version: 1.1.3
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-11-26T16:59:15.043149738Z"
@@ -672,4 +692,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-11-26T21:56:52.176143862Z"
+generated: "2024-11-26T23:30:06.883795508Z"
