@@ -23,7 +23,9 @@ spec:
       "tlsSkipVerify": true
       "timeInterval": "5s"
       httpHeaderName1: 'Authorization'
-      customQueryParameters: "mesh_id=istio-system/full-install"
+      {{- with .Values.datasource.jsonData.customQueryParameters }}
+      customQueryParameters: {{ . | quote }}
+      {{- end }}
     secureJsonData:
       "httpHeaderValue1": "Bearer ${token}" # Notice the brakes around token
     editable: true
