@@ -1,5 +1,11 @@
+smcp:
+  name: ossm-2-6
+  namespace: istio-system
 cookieSecret: supersecret
 datasource:
   url: 'https://thanos-querier.openshift-monitoring.svc.cluster.local:9091'
   jsonData:
     customQueryParameters: "mesh_id=istio-system/full-install"
+consoleLink: 
+  enabled: false
+  route: 
