@@ -8,5 +8,5 @@ roleRef:
   name: cluster-monitoring-view
 subjects:
 - kind: ServiceAccount
-  name: kiali-service-account
+  name: {{ printf "kiali-%s-%s-service-account" .Values.smcp.name .Values.smcp.namespace | quote }}
   namespace: {{ .Release.Namespace }}
