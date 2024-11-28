@@ -1,0 +1,17 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: mesh-default
+  annotations:
+    argocd.argoproj.io/sync-wave: '4'
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  {{- if .Values.tempo.enabled }}
+  tracing:
+  - providers:
+    - name: tempo
+    randomSamplingPercentage: 100
+  {{- end }}
+  metrics:
+  - providers:
+    - name: prometheus

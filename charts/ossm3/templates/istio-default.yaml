@@ -1,0 +1,27 @@
+﻿kind: Istio
+apiVersion: sailoperator.io/v1alpha1
+metadata:
+  name: default
+spec:
+  namespace: istio-system
+  updateStrategy:
+    type: InPlace
+  values:
+    meshConfig:
+      discoverySelectors:
+        - matchExpressions:
+            - key: maistra.io/member-of
+              operator: DoesNotExist
+      enableTracing: true
+      # TODO
+      # extensionProviders:
+      #   - name: otel-tracing
+      #     opentelemetry:
+      #       port: 4317
+      #       service: otel-collector.istio-system.svc.cluster.local
+      extensionProviders:
+        - name: tempo
+          opentelemetry:
+            service: {{ .Values.tempo.host }}
+            port: 4317
+  version: v1.23.0
