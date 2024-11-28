@@ -462,6 +462,16 @@ entries:
   ossm3:
   - apiVersion: v2
     appVersion: 1.23.0
+    created: "2024-11-28T00:25:28.799616814Z"
+    description: A Helm chart for Kubernetes
+    digest: dc7075ea24f2eee2776608fb886c3f9d0eaec10e24d7035aa4e9239aee5d0115
+    name: ossm3
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/ossm3-0.0.2/ossm3-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.23.0
     created: "2024-11-28T00:15:05.653554027Z"
     description: A Helm chart for Kubernetes
     digest: 02b346cd9321bb7f5fca271180e7b95de550139ca6b68ceb2e317df4e851b369
@@ -703,4 +713,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-11-28T00:15:05.653734396Z"
+generated: "2024-11-28T00:25:28.799774177Z"
