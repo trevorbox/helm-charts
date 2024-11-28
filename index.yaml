@@ -459,6 +459,17 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.0/openshift-oauth-proxy-0.1.0.tgz
     version: 0.1.0
+  ossm3:
+  - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2024-11-28T00:15:05.653554027Z"
+    description: A Helm chart for Kubernetes
+    digest: 02b346cd9321bb7f5fca271180e7b95de550139ca6b68ceb2e317df4e851b369
+    name: ossm3
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/ossm3-0.0.1/ossm3-0.0.1.tgz
+    version: 0.0.1
   prometheus:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -692,4 +703,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-11-26T23:30:06.883795508Z"
+generated: "2024-11-28T00:15:05.653734396Z"
