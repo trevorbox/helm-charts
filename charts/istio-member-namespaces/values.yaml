@@ -1,12 +1,15 @@
 userWorkloadAccess:
   enabled: true
+  podMonitor:
+    meshIdLabel:
+      enabled: true
+      key: mesh_id
+      value: istiod-istio-system
 members:
   - istio-ingress
 labels:
-  istio.io/rev: ossm-2.6
+  istio.io/rev: default
+  istio-injection: enabled
   argocd.argoproj.io/managed-by: openshift-gitops
 annotations:
   argocd.argoproj.io/sync-options: Delete=false 
-smcp:
-  name: ossm-2-6
-  namespace: istio-system

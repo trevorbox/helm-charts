@@ -40,9 +40,11 @@ spec:
     - sourceLabels: [__meta_kubernetes_pod_name]
       action: replace
       targetLabel: pod_name
+    {{- if $.Values.userWorkloadAccess.podMonitor.meshIdLabel.enabled }}
     - action: replace
-      replacement: {{ printf "%s/%s" $.Values.smcp.namespace $.Values.smcp.name }}
-      targetLabel: mesh_id
+      replacement: {{ $.Values.userWorkloadAccess.podMonitor.meshIdLabel.value }}
+      targetLabel: {{ $.Values.userWorkloadAccess.podMonitor.meshIdLabel.key }}
+    {{- end }}
 ...
 {{- end }}
 {{- end }}

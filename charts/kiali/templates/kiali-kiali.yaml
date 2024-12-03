@@ -1,82 +1,8 @@
 ﻿apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
-  name: {{ printf "kiali-%s-%s" .Values.smcp.name .Values.smcp.namespace | quote }}
+  name: {{ printf "%s-%s" .Values.kiali.spec.deployment.instance_name .Values.kiali.spec.istio_namespace | quote }}
 spec:
-  auth:
-    strategy: openshift
-  {{- with .Values.api }}
-  api:
-    {{- . | toYaml | nindent 4 }}
-  {{- end }}
-  deployment:
-    instance_name: {{ printf "kiali-%s-%s" .Values.smcp.name .Values.smcp.namespace | quote }}
-    {{- with .Values.accessible_namespaces }}
-    accessible_namespaces:
-      {{- . | toYaml | nindent 6 }}
-    {{- end }}
-    cluster_wide_access: {{ .Values.cluster_wide_access }}
-    image_pull_policy: ''
-    ingress:
-      enabled: true
-    namespace: {{ .Values.deployment.namespace }}
-    pod_labels:
-      sidecar.istio.io/inject: "false"
-      maistra.io/expose-route: "true"
-    resources:
-      requests:
-        cpu: 100m
-        memory: 256Mi
-    logger:
-      log_level: debug
-    replicas: {{ .Values.replicas }}
-  external_services:
-    custom_dashboards:
-      namespace_label: kubernetes_namespace
-    grafana:
-      enabled: true
-      # Grafana service name is "grafana" and is in the "telemetry" namespace.
-      in_cluster_url: {{ .Values.grafana.in_cluster_url }}
-      # Public facing URL of Grafana
-      url: {{ .Values.grafana.url }}
-      dashboards:
-      - name: "Istio Service Dashboard"
-        variables:
-          namespace: "var-namespace"
-          service: "var-service"
-      - name: "Istio Workload Dashboard"
-        variables:
-          namespace: "var-namespace"
-          workload: "var-workload"
-      - name: "Istio Mesh Dashboard"
-      - name: "Istio Control Plane Dashboard"
-      - name: "Istio Performance Dashboard"
-      - name: "Istio Wasm Extension Dashboard"
-    istio:
-      config_map_name: istio-{{ .Values.smcp.name }}
-      istio_sidecar_injector_config_map_name: istio-sidecar-injector-{{ .Values.smcp.name }}
-      istiod_deployment_name: istiod-{{ .Values.smcp.name }}
-      url_service_version: 'http://istiod-{{ .Values.smcp.name }}.{{ .Values.smcp.namespace }}:15014/version'
-      root_namespace: {{ .Values.smcp.namespace }}
-      component_status:
-        enabled: true
-        components:
-        - app_label: istiod
-          is_core: true
-        - app_label: istio-ingressgateway
-          is_core: true
-          is_proxy: true
-          namespace: {{.Values.ingressgateway.namespace }}
-    prometheus:
-    {{- with .Values.prometheus }}
-      {{- . | toYaml | nindent 6 }}
-    {{- end }}
-    tracing:
-      query_timeout: 30
-      enabled: true
-      in_cluster_url: {{ .Values.tracing.in_cluster_url }}
-      url: {{ .Values.tracing.url }}
-      use_grpc: true
-  installation_tag: {{ printf "Kiali [%s-%s]" .Values.smcp.name .Values.smcp.namespace | quote }}
-  istio_namespace: {{ .Values.smcp.namespace }}
-  version: {{ .Values.version }}
+{{- with .Values.kiali.spec }}
+  {{- . | toYaml | nindent 2 }}
+{{- end }}

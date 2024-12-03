@@ -1,43 +1,72 @@
-smcp:
-  name: ossm-2-6
-  namespace: istio-system
-ingressgateway:
-  namespace: istio-ingress
-deployment:
-  namespace: kiali
 consoleLink: 
   enabled: true
-  route: "https://kiali-istio-system.apps-crc.testing"
-grafana:
-  in_cluster_url: http://grafana-instance-service.istio-system.svc:3000
-  url:
-tracing: 
-  in_cluster_url: http://tempo-minio-dev-query-frontend.tempo-system.svc.cluster.local:16685
-  url:
-prometheus:
-  auth:
-    insecure_skip_verify: true
-    type: bearer
-    use_kiali_token: true
-  query_scope:
-    mesh_id: istio-system/ossm-2-6
-  url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
-replicas: 1
+  route: "https://kiali-kiali.apps-crc.testing"
 ossmconsole:
-  enabled: true
-cluster_wide_access: true
-accessible_namespaces: # use when cluster_wide_access is false for multi tenant config
-  # - bookinfo
-  # - golang-ex
-  # - istio-ingress
-  # - nginx-echo-headers
-api:
-  # namespaces:
-  #   exclude:
-  #   - "^istio-operator"
-  #   - "^kube-.*"
-  #   - "^openshift.*"
-  #   - "^ibm.*"
-  #   - "^kiali-operator"
-  #   label_selector_include: "kiali.io/member-of=istio-system"
-version: v1.73 # see https://kiali.io/docs/installation/installation-guide/prerequisites/#openshift-service-mesh-version-compatibility
+  enabled: false
+kiali:
+  spec:
+    auth:
+      strategy: openshift
+    deployment:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+      image_pull_policy: ''
+      cluster_wide_access: true
+      logger:
+        log_level: debug
+      ingress:
+        enabled: true
+      instance_name: kiali
+      pod_labels:
+        maistra.io/expose-route: 'true'
+        sidecar.istio.io/inject: 'false'
+      namespace: kiali
+      replicas: 1
+    external_services:
+      custom_dashboards:
+        namespace_label: kubernetes_namespace
+      grafana:
+        dashboards:
+          - name: Istio Service Dashboard
+            variables:
+              namespace: var-namespace
+              service: var-service
+          - name: Istio Workload Dashboard
+            variables:
+              namespace: var-namespace
+              workload: var-workload
+          - name: Istio Mesh Dashboard
+          - name: Istio Control Plane Dashboard
+          - name: Istio Performance Dashboard
+          - name: Istio Wasm Extension Dashboard
+        enabled: true
+        in_cluster_url: 'http://grafana-instance-service.grafana.svc:3000'
+        url: 'https://grafana-instance-route-grafana.apps-crc.testing'
+      istio:
+        component_status:
+          components:
+            - app_label: istiod
+              is_core: true
+            - app_label: istio-ingressgateway
+              is_core: true
+              is_proxy: true
+              namespace: istio-ingress
+          enabled: true
+        config_map_name: istio
+        istio_sidecar_injector_config_map_name: istio-sidecar-injector
+        istiod_deployment_name: istiod
+        root_namespace: istio-system
+        url_service_version: 'http://istiod.istio-system:15014/version'
+      prometheus:
+        url: 'http://prometheus-server.prometheus.svc.cluster.local'
+      tracing:
+        enabled: true
+        in_cluster_url: 'http://tempo-minio-dev-query-frontend.tempo-system.svc.cluster.local:16685'
+        query_timeout: 30
+        url: 'https://jaeger-ui-proxy-tempo-system.apps-crc.testing'
+        use_grpc: true
+    installation_tag: 'Kiali'
+    istio_namespace: istio-system
+    # version: v1.73

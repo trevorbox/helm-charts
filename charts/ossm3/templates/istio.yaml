@@ -1,0 +1,9 @@
+﻿kind: Istio
+apiVersion: sailoperator.io/v1alpha1
+metadata:
+  name: {{ .Values.istio.name }}
+spec:
+{{- with .Values.istio.spec }}
+  {{- . | toYaml | nindent 2}}
+{{- end }}
+
