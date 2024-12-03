@@ -238,6 +238,16 @@ entries:
   istio-member-namespaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-12-03T23:08:37.924354735Z"
+    description: A Helm chart for Kubernetes
+    digest: 0be758958629634f5d3f370e1809f001a402d97e75a1ce2e0ff25cd7a3090526
+    name: istio-member-namespaces
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-1.0.0/istio-member-namespaces-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-21T20:17:20.820120457Z"
     description: A Helm chart for Kubernetes
     digest: 8e97fd84ade607fe2c24d1daf1d6d705de9edab1b6456140c719de55a5f45dff
@@ -267,6 +277,16 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-0.1.0/istio-member-namespaces-0.1.0.tgz
     version: 0.1.0
   kiali:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-12-03T23:08:38.035489921Z"
+    description: A Helm chart for Kubernetes
+    digest: 9eed66577b2783137d53b307602c426b0ddd50f595b333ad2b5206035981a3dc
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/kiali-2.0.0/kiali-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-11-26T23:30:06.883324355Z"
@@ -460,6 +480,16 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.0/openshift-oauth-proxy-0.1.0.tgz
     version: 0.1.0
   ossm3:
+  - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2024-12-03T23:08:38.132732976Z"
+    description: A Helm chart for Kubernetes
+    digest: 6d067c5b746543200c92789a5becd498385a69f9223e05741a9ca458ebce42c0
+    name: ossm3
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/ossm3-0.0.3/ossm3-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 1.23.0
     created: "2024-11-28T00:25:28.799616814Z"
@@ -713,4 +743,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-11-28T00:25:28.799774177Z"
+generated: "2024-12-03T23:08:38.13299753Z"
