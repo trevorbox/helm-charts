@@ -11,7 +11,7 @@ spec:
   http:
   - route:
     - destination:
-        host: nginx-echo-headers.nginx-echo-headers.svc.cluster.local
+        host: nginx-echo-headers.{{ .Release.Namespace }}.svc.cluster.local
         port:
           number: 8080
 ...

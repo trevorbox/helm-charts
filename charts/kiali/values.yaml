@@ -46,13 +46,13 @@ kiali:
         url: 'https://grafana-instance-route-grafana.apps-crc.testing'
       istio:
         component_status:
-          components:
-            - app_label: istiod
-              is_core: true
-            - app_label: istio-ingressgateway
-              is_core: true
-              is_proxy: true
-              namespace: istio-ingress
+          # components:
+          #   - app_label: istiod
+          #     is_core: true
+          #   - app_label: istio-ingressgateway
+          #     is_core: true
+          #     is_proxy: true
+          #     namespace: istio-ingress
           enabled: true
         config_map_name: istio
         istio_sidecar_injector_config_map_name: istio-sidecar-injector
@@ -69,4 +69,11 @@ kiali:
         use_grpc: true
     installation_tag: 'Kiali'
     istio_namespace: istio-system
+    istio_labels:
+      app_label_name: "app"
+      egress_gateway_label: "istio=egressgateway"
+      ingress_gateway_label: "istio=ingressgateway"
+      injection_label_name: "istio-injection"
+      injection_label_rev: "istio.io/rev"
+      version_label_name: "version"
     # version: v1.73
