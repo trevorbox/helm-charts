@@ -10,12 +10,10 @@ spec:
   meshConfig:
     {{- if eq .Values.smcp.mode "ClusterWide" }}
     discoverySelectors:
-      - matchLabels:
-          {{- .Values.namespaceMemberSelector | toYaml | nindent 10 }}
+      - matchExpressions:
+        - key: maistra.io/member-of
+          operator: Exists
     {{- end }}
-    extensionProviders:
-      - name: prometheus
-        prometheus: {}
     {{- if .Values.tempo.enabled }}    
       - name: tempo
         opentelemetry:
