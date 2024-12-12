@@ -14,7 +14,8 @@ spec:
         - key: maistra.io/member-of
           operator: Exists
     {{- end }}
-    {{- if .Values.tempo.enabled }}    
+    {{- if .Values.tempo.enabled }}
+    extensionProviders:
       - name: tempo
         opentelemetry:
           service: {{ .Values.tempo.host }}
