@@ -645,6 +645,20 @@ entries:
   smcp:
   - apiVersion: v2
     appVersion: v2.6.0
+    created: "2024-12-12T22:53:17.148830633Z"
+    description: A simplified Service Mesh Control Plane (SMCP) deployment example.
+    digest: c1dcf0488c2dcfba73ddbf8ab0e2c475b38f5b0a4f3ef9c680352adcbdbb0aae
+    maintainers:
+    - name: trevorbox
+    name: smcp
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.6.4/smcp-2.6.4.tgz
+    version: 2.6.4
+  - apiVersion: v2
+    appVersion: v2.6.0
     created: "2024-12-12T22:41:54.822622159Z"
     description: A simplified Service Mesh Control Plane (SMCP) deployment example.
     digest: a75b4ad4d2edb3833829a04c702be4b69664857cf12b6b4322a0518f01c34058
@@ -825,4 +839,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-12-12T22:41:54.822818265Z"
+generated: "2024-12-12T22:53:17.149108099Z"
