@@ -13,8 +13,10 @@ spec:
       - matchLabels:
           {{- .Values.namespaceMemberSelector | toYaml | nindent 10 }}
     {{- end }}
-    {{- if .Values.tempo.enabled }}
     extensionProviders:
+      - name: prometheus
+        prometheus: {}
+    {{- if .Values.tempo.enabled }}    
       - name: tempo
         opentelemetry:
           service: {{ .Values.tempo.host }}
