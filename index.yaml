@@ -238,6 +238,16 @@ entries:
   istio-member-namespaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-12-12T18:46:42.389625677Z"
+    description: A Helm chart for Kubernetes
+    digest: f5abb4fd76c241d1d5cc7372305b87cf47805b058a0f7b1b2ddce8564800e34e
+    name: istio-member-namespaces
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-1.0.1/istio-member-namespaces-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-12-03T23:08:37.924354735Z"
     description: A Helm chart for Kubernetes
     digest: 0be758958629634f5d3f370e1809f001a402d97e75a1ce2e0ff25cd7a3090526
@@ -777,4 +787,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-12-12T17:46:47.717160657Z"
+generated: "2024-12-12T18:46:42.389763305Z"
