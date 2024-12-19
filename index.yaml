@@ -853,4 +853,15 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.5.0/smcp-2.5.0.tgz
     version: 2.5.0
-generated: "2024-12-12T22:55:52.085874569Z"
+  spring-boot-demo:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-12-19T23:13:55.391536934Z"
+    description: A Helm chart for Kubernetes
+    digest: e0483814736fb3300ee4d6340210f6968cd65146fc0df13d77628c5bb93670df
+    name: spring-boot-demo
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
+    version: 0.0.1
+generated: "2024-12-19T23:13:55.391752427Z"
