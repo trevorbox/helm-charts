@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "spring-boot-demo.fullname" . }}
+  labels:
+    {{- include "spring-boot-demo.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - name: "jfr-jmx"
+      port: 9091
+      targetPort: 9091
+  selector:
+    {{- include "spring-boot-demo.selectorLabels" . | nindent 4 }}
