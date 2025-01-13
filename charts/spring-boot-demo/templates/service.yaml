@@ -14,5 +14,6 @@ spec:
     - name: "jfr-jmx"
       port: 9091
       targetPort: 9091
+      appProtocol: tcp
   selector:
     {{- include "spring-boot-demo.selectorLabels" . | nindent 4 }}
