@@ -37,9 +37,12 @@ spec:
           #       -Dcom.sun.management.jmxremote.ssl=false
           #       -Dcom.sun.management.jmxremote.authenticate=false
           env:
-            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_TRUST_ALL
-              value: "true"
-
+            # - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_TRUST_ALL
+            #   value: "true"
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_REQUIRED
+              value: "false"
+            # - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_VERIFY_HOSTNAME
+            #   value: "false"
             - name: CRYOSTAT_AGENT_APP_NAME
               # Replace this with any value you like to use to identify your application.
               value: "spring-boot-demo"
