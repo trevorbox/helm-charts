@@ -37,6 +37,9 @@ spec:
           #       -Dcom.sun.management.jmxremote.ssl=false
           #       -Dcom.sun.management.jmxremote.authenticate=false
           env:
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_TRUST_ALL
+              value: "true"
+
             - name: CRYOSTAT_AGENT_APP_NAME
               # Replace this with any value you like to use to identify your application.
               value: "spring-boot-demo"
@@ -51,7 +54,7 @@ spec:
               # choose to configure the Agent to communicate with a Cryostat in
               # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: https://cryostat.cryostat.svc.cluster.local:4180
+              value: http://cryostat.cryostat.svc.cluster.local:4180
             - name: CRYOSTAT_AGENT_API_WRITES_ENABLED
               # Set this to 'true' to turn on the "write" or "mutation" capabilities of the
               # Agent's HTTP API. This defaults to 'false', so the Agent HTTP API only exposes
