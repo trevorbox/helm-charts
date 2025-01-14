@@ -856,6 +856,16 @@ entries:
   spring-boot-demo:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-14T23:36:11.919859088Z"
+    description: A Helm chart for Kubernetes
+    digest: ff181ec12f10ba9ef0613d962fc5fd882c019663e4411eaff5f3880e8169b0a8
+    name: spring-boot-demo
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.9/spring-boot-demo-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-14T22:35:20.869980444Z"
     description: A Helm chart for Kubernetes
     digest: b57dafb619ccf951cf52e8ece7fa8b260f93a2aa91afda5da0d7331fd336b577
@@ -934,4 +944,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-01-14T22:35:20.870235911Z"
+generated: "2025-01-14T23:36:11.92012346Z"
