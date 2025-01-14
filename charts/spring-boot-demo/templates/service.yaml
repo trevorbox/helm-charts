@@ -11,10 +11,10 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-    - name: "jfr-jmx"
-      port: 9091
-      targetPort: 9091
-      appProtocol: tcp
+    # - name: "jfr-jmx"
+    #   port: 9091
+    #   targetPort: 9091
+    #   appProtocol: tcp
     - name: "cryostat-agent"
       port: 9977
       targetPort: 9977
