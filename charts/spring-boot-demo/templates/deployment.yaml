@@ -78,8 +78,7 @@ spec:
               # do 'oc whoami --show-token' in your terminal to retrieve your user account's token.
               # You may use this as the token that the Agent will pass to authorize itself
               # with the Cryostat server.
-            # - name: CRYOSTAT_AGENT_AUTHORIZATION
-            #   value: "Bearer abcd1234"            
+            # CRYOSTAT_AGENT_AUTHORIZATION NOT NEEDED - just update the Cryostat CR spec.authorizationOptions.openShiftSSO.accessReview and add a RoleBinding to match to allow the serviceaccount in the cryostat-agent pod         
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
