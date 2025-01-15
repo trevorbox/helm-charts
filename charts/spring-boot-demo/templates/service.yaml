@@ -18,6 +18,6 @@ spec:
     - name: "cryostat-agent"
       port: 9977
       targetPort: 9977
-      appProtocol: http
+      appProtocol: tcp
   selector:
     {{- include "spring-boot-demo.selectorLabels" . | nindent 4 }}
