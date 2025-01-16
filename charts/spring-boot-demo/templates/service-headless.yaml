@@ -1,11 +1,12 @@
+# needed for jmx or cryostat agent for pod-to-pod communication when mtls is enabled
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "spring-boot-demo.fullname" . }}
+  name: {{ include "spring-boot-demo.fullname" . }}-headless
   labels:
     {{- include "spring-boot-demo.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  clusterIP: None
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
