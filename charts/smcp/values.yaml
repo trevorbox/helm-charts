@@ -6,6 +6,13 @@ smcp:
   version: v2.6
   mode: ClusterWide # MultiTenant
   outboundPolicy: REGISTRY_ONLY # ALLOW_ANY
+  discoverySelectors:
+    - matchExpressions:
+      - key: maistra.io/member-of
+        operator: Exists
+    # - matchLabels:
+    #     # Allow any namespaces with `istio-discovery=enabled`
+    #     istio-discovery: enabled
 tempo:
   enabled: true
   host: tempo-minio-dev-distributor.tempo-system.svc.cluster.local

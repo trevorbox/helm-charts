@@ -9,10 +9,10 @@ spec:
   {{- if or (eq .Values.smcp.mode "ClusterWide") (.Values.tempo.enabled) }}
   meshConfig:
     {{- if eq .Values.smcp.mode "ClusterWide" }}
+    {{- with .Values.smcp.discoverySelectors }}
     discoverySelectors:
-      - matchExpressions:
-        - key: maistra.io/member-of
-          operator: Exists
+      {{- . | toYaml | nindent 6}}
+    {{- end }}
     {{- end }}
     {{- if .Values.tempo.enabled }}
     extensionProviders:
