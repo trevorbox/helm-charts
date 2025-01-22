@@ -1,3 +1,4 @@
+{{- if .Values.telemetry.enabled }}
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
@@ -15,3 +16,4 @@ spec:
   metrics:
   - providers:
     - name: prometheus
+{{- end }}

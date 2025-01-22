@@ -4,6 +4,13 @@ kiali:
 tempo:
   enabled: true
   host: tempo-minio-dev-distributor.tempo-system.svc.cluster.local
+networkpolicy:
+  userWorkloadMonitoring:
+    enabled: true
+serviceMonitor:
+  enabled: true
+telemetry:
+  enabled: true
 istio:
   name: default
   spec:
