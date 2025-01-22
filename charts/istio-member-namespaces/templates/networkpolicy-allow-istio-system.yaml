@@ -1,5 +1,5 @@
 
-{{- if .Values.networkpolicy.allowIstioSystem.enabled }}
+{{- if .Values.networkpolicies.canaryUpgrades.enabled }}
 {{- range .Values.members }}
 ---
 kind: NetworkPolicy
@@ -13,7 +13,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: {{ $.Values.networkpolicy.allowIstioSystem.istioSystemNamespace }}
+              kubernetes.io/metadata.name: {{ $.Values.networkpolicies.canaryUpgrades.istioSystemNamespace }}
   policyTypes:
     - Ingress
 ...
