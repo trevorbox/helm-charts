@@ -12,3 +12,7 @@ labels:
   argocd.argoproj.io/managed-by: openshift-gitops
 annotations:
   argocd.argoproj.io/sync-options: Delete=false 
+networkpolicy:
+  allowIstioSystem: 
+    enabled: true
+    istioSystemNamespace: istio-system

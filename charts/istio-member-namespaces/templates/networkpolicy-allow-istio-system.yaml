@@ -1,0 +1,21 @@
+
+{{- if .Values.networkpolicy.allowIstioSystem.enabled }}
+{{- range .Values.members }}
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-istio-system
+  namespace: {{ . }}
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ $.Values.networkpolicy.allowIstioSystem.istioSystemNamespace }}
+  policyTypes:
+    - Ingress
+...
+{{- end }}
+{{- end }}
