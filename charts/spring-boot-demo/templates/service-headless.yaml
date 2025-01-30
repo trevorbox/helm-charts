@@ -8,10 +8,6 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
     - name: cryostat-agent
       protocol: TCP
       appProtocol: tcp
