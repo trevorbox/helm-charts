@@ -572,6 +572,16 @@ entries:
   ossm3:
   - apiVersion: v2
     appVersion: 1.23.0
+    created: "2025-03-11T23:29:42.893188752Z"
+    description: A Helm chart for Kubernetes
+    digest: 185be237081278eacf58e9d3f0b7230fd949f894aebebb25236aefbba1927430
+    name: ossm3
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/ossm3-1.0.0/ossm3-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 1.23.0
     created: "2025-01-22T17:55:39.105473699Z"
     description: A Helm chart for Kubernetes
     digest: fadcae9a8073d2e4a03a482960f7a6534921309dc494fc6a681605a88f81b97a
@@ -1058,4 +1068,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-02-17T18:42:36.152771577Z"
+generated: "2025-03-11T23:29:42.893515159Z"
