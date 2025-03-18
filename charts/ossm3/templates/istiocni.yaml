@@ -1,7 +1,7 @@
 ﻿kind: IstioCNI
 apiVersion: sailoperator.io/v1
 metadata:
-  name: {{ .Values.istio.name }}
+  name: default
 spec:
   namespace: istio-cni
   version: {{ .Values.istio.spec.version }}
