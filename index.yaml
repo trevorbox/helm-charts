@@ -572,6 +572,16 @@ entries:
   ossm3:
   - apiVersion: v2
     appVersion: 1.23.0
+    created: "2025-03-19T20:17:17.960665799Z"
+    description: A Helm chart for Kubernetes
+    digest: 0d4f073505e71da46cc8a0756b6b3282f93f254fcbf4b7b527b64e9468333097
+    name: ossm3
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/ossm3-2.0.2/ossm3-2.0.2.tgz
+    version: 2.0.2
+  - apiVersion: v2
+    appVersion: 1.23.0
     created: "2025-03-19T15:12:28.284446366Z"
     description: A Helm chart for Kubernetes
     digest: c1e7ade9ce193d53a45beb42ba3493a704df7bb654ad6f34085242e4ab896e24
@@ -743,6 +753,20 @@ entries:
     - https://github.com/trevorbox/helm-charts/releases/download/service-mesh-operators-4.7.13/service-mesh-operators-4.7.13.tgz
     version: 4.7.13
   smcp:
+  - apiVersion: v2
+    appVersion: v2.6.0
+    created: "2025-03-19T20:17:18.142345537Z"
+    description: A simplified Service Mesh Control Plane (SMCP) deployment example.
+    digest: dc019277bf3cc8c97fa156440786cf21cda4bffcfd841d4bf876e73eafb58e14
+    maintainers:
+    - name: trevorbox
+    name: smcp
+    sources:
+    - https://github.com/trevorbox/helm-charts
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/smcp-2.6.7/smcp-2.6.7.tgz
+    version: 2.6.7
   - apiVersion: v2
     appVersion: v2.6.0
     created: "2025-01-16T20:05:17.847722135Z"
@@ -1098,4 +1122,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-03-19T15:12:28.284766402Z"
+generated: "2025-03-19T20:17:18.14263606Z"
