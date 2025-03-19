@@ -2,7 +2,7 @@
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
-  name: mesh-default
+  name: mesh-default-{{ .Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: '4'
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true

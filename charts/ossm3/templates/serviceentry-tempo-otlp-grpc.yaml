@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: tempo-otlp-grpc
+  name: tempo-otlp-grpc-{{ .Release.Namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: '4'
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
