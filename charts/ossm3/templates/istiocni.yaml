@@ -3,5 +3,5 @@ apiVersion: sailoperator.io/v1
 metadata:
   name: default
 spec:
-  namespace: istio-cni
-  version: {{ .Values.istio.spec.version }}
+  namespace: {{ .Values.istioCNI.namespace }}
+  version: {{ .Values.istioCNI.version }}
