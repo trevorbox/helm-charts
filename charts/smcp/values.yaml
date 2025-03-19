@@ -8,15 +8,17 @@ smcp:
   outboundPolicy: REGISTRY_ONLY # ALLOW_ANY
   discoverySelectors:
     - matchExpressions:
-      - key: maistra.io/member-of
-        operator: Exists
+        - key: istio.io/rev
+          operator: Exists
+    - matchLabels:
+        kubernetes.io/metadata.name: istio-system
+    # - matchLabels:
+    #     kubernetes.io/metadata.name: istio-system
     # - matchLabels:
     #     # Allow any namespaces with `istio-discovery=enabled`
     #     istio-discovery: enabled
 tempo:
   enabled: true
   host: tempo-minio-dev-distributor.tempo-system.svc.cluster.local
-kiali:
-  enabled: false
 istiod:
-  replicas: 2
+  replicas: 1

@@ -25,12 +25,13 @@ spec:
   tracing:
     sampling: 10000
     type: None
+  # Do mTLS with your own configs - PeerAuthentication
   security:
     dataPlane:
-      mtls: true
-      automtls: true
+      mtls: false
+      automtls: false
     controlPlane:
-      mtls: true
+      mtls: false
   proxy:
     {{- if .Values.smcp.accessLoggingEnabled }}
     accessLogging:
@@ -53,9 +54,7 @@ spec:
     grafana:
       enabled: false
     kiali:
-      {{- with .Values.kiali }}
-      {{- . | toYaml | nindent 6 }}
-      {{- end }}
+      enabled: false
     prometheus:
       enabled: false
   runtime:

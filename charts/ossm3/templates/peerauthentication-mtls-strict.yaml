@@ -1,9 +1,0 @@
-{{- if .Values.requireMtls }}
-apiVersion: security.istio.io/v1beta1
-kind: PeerAuthentication
-metadata:
-  name: mtls-strict
-spec:
-  mtls:
-    mode: STRICT
-{{- end }}
