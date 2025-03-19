@@ -28,10 +28,10 @@ spec:
   # Do mTLS with your own configs - PeerAuthentication
   security:
     dataPlane:
-      mtls: false
-      automtls: false
+      mtls: true
+      automtls: true
     controlPlane:
-      mtls: false
+      mtls: true
   proxy:
     {{- if .Values.smcp.accessLoggingEnabled }}
     accessLogging:
