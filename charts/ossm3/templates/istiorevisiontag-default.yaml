@@ -1,9 +1,0 @@
-# https://istio.io/latest/docs/setup/upgrade/canary/#default-tag
-apiVersion: sailoperator.io/v1
-kind: IstioRevisionTag
-metadata:
-  name: default
-spec:
-  targetRef:
-    kind: IstioRevision
-    name: {{ .Values.istioRevisionTags.default.istioRevision }}

@@ -1,8 +1,0 @@
-apiVersion: sailoperator.io/v1
-kind: IstioRevisionTag
-metadata:
-  name: canary
-spec:
-  targetRef:
-    kind: IstioRevision
-    name: {{ .Values.istioRevisionTags.canary.istioRevision }}
