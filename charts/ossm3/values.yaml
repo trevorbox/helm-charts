@@ -47,6 +47,7 @@ revisions:
                 cpu: 50m
                 memory: 32Mi
         meshConfig:
+          enablePrometheusMerge: true
           # https://istio.io/v1.24/docs/ops/configuration/traffic-management/dns-proxy/#dns-auto-allocation-v2
           defaultConfig:
             proxyMetadata:
