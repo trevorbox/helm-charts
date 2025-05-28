@@ -17,6 +17,16 @@ entries:
     version: 2.5.0
   - apiVersion: v2
     appVersion: 2.4.0
+    created: "2025-05-28T22:46:47.650067023Z"
+    description: A Helm chart for Kubernetes
+    digest: b7d863b201e158f14e69af74ca53d3ec661128b835eae9b028f03a927d17fa14
+    name: bookinfo
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-2.4.2/bookinfo-2.4.2.tgz
+    version: 2.4.2
+  - apiVersion: v2
+    appVersion: 2.4.0
     created: "2024-06-25T17:46:07.991423798Z"
     description: A Helm chart for Kubernetes
     digest: 44a31d553af83e90f570253381b503047f01b11cf12077e91543c769fa918e52
@@ -1186,4 +1196,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-05-16T16:43:16.480978671Z"
+generated: "2025-05-28T22:46:47.650480374Z"
