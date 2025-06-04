@@ -22,6 +22,7 @@ spec:
       labels:
         {{- include "golang-ex.selectorLabels" . | nindent 8 }}
         app: golang-ex-{{ .Values.version }}
+        sidecar.istio.io/inject: "true"
         version: {{ .Values.version | quote }}
     spec:
       {{- with .Values.imagePullSecrets }}
