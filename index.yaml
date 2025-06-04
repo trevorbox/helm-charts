@@ -91,6 +91,16 @@ entries:
   golang-ex:
   - apiVersion: v2
     appVersion: v2
+    created: "2025-06-04T20:49:05.831854708Z"
+    description: A Helm chart for Kubernetes
+    digest: 9cadbc1df6936bb60d2fb146354c28c49c5485bb778c5917b7bf7c8d94e2416e
+    name: golang-ex
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/golang-ex-0.2.1/golang-ex-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: v2
     created: "2025-01-22T02:59:20.226181208Z"
     description: A Helm chart for Kubernetes
     digest: 9410bf0afd7a6bf9ba44adfc5e06be173bef61e6bbd14d3ad8fc8327c079ab71
@@ -1196,4 +1206,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-05-28T22:46:47.650480374Z"
+generated: "2025-06-04T20:49:05.832285163Z"
