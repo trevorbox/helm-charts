@@ -243,6 +243,17 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-0.1.0/grafana-istio-0.1.0.tgz
     version: 0.1.0
+  helloworld:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-06-18T19:27:10.649256164Z"
+    description: A Helm chart for Kubernetes
+    digest: f3e1b3dc9046f87acf0433e73532fc362724229fd18e87d0200b8b6eaac6c56e
+    name: helloworld
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/helloworld-0.0.2/helloworld-0.0.2.tgz
+    version: 0.0.2
   istio-gateway:
   - apiVersion: v2
     appVersion: 1.18.5
@@ -1217,4 +1228,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-06-18T19:02:56.276574628Z"
+generated: "2025-06-18T19:27:10.649847581Z"
