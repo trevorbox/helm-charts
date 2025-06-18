@@ -4,6 +4,7 @@ metadata:
   name: {{ include "curl.fullname" . }}
   labels:
     {{- include "curl.labels" . | nindent 4 }}
+    app: curl
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -11,6 +12,7 @@ spec:
   selector:
     matchLabels:
       {{- include "curl.selectorLabels" . | nindent 6 }}
+      app: curl
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -22,6 +24,7 @@ spec:
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
+        app: curl
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

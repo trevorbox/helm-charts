@@ -4,6 +4,8 @@ metadata:
   name: {{ include "curl.fullname" . }}
   labels:
     {{- include "curl.labels" . | nindent 4 }}
+    app: curl
+    service: curl
 spec:
   type: {{ .Values.service.type }}
   ports:
