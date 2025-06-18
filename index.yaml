@@ -91,6 +91,16 @@ entries:
   curl:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-06-18T19:38:32.42120413Z"
+    description: A Helm chart for Kubernetes
+    digest: 5ede378f61ea312e8403496793288e13df7cd0be8f4b40a2e3f3144a3e7665ca
+    name: curl
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/curl-0.0.2/curl-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-06-18T19:02:56.276255974Z"
     description: A Helm chart for Kubernetes
     digest: 46eacb4306092bc3ffa9626387b39713e7a28eb74dc3460b14874a94f6a9fd92
@@ -1228,4 +1238,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-06-18T19:27:10.649847581Z"
+generated: "2025-06-18T19:38:32.421587488Z"
