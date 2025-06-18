@@ -88,6 +88,17 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/bookinfo-istio-0.1.0/bookinfo-istio-0.1.0.tgz
     version: 0.1.0
+  curl:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-06-18T19:02:56.276255974Z"
+    description: A Helm chart for Kubernetes
+    digest: 46eacb4306092bc3ffa9626387b39713e7a28eb74dc3460b14874a94f6a9fd92
+    name: curl
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/curl-0.0.1/curl-0.0.1.tgz
+    version: 0.0.1
   golang-ex:
   - apiVersion: v2
     appVersion: v2
@@ -232,17 +243,6 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-0.1.0/grafana-istio-0.1.0.tgz
     version: 0.1.0
-  helloworld:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2025-06-18T19:02:41.381254728Z"
-    description: A Helm chart for Kubernetes
-    digest: 43d563122ab13620bb154552dfe691322f7cadc268903550e0b9aad4fa1007b8
-    name: helloworld
-    type: application
-    urls:
-    - https://github.com/trevorbox/helm-charts/releases/download/helloworld-0.0.1/helloworld-0.0.1.tgz
-    version: 0.0.1
   istio-gateway:
   - apiVersion: v2
     appVersion: 1.18.5
@@ -1217,4 +1217,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-06-18T19:02:41.381662281Z"
+generated: "2025-06-18T19:02:56.276574628Z"
