@@ -1,6 +1,6 @@
 {
-  "issuer": "https://kubernetes.default.svc",
-  "jwks_uri": "https://api.crc.testing:6443/openid/v1/jwks",
+  "issuer": "https://trevorbox.github.io/helm-charts/",
+  "jwks_uri": "https://trevorbox.github.io/helm-charts/openid/v1/jwks",
   "response_types_supported": [
     "id_token"
   ],
