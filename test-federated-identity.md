@@ -216,6 +216,13 @@ status:
 
 ## Setup Azure federated Identity Example
 
+![Application azwi-test](./.img/application.png)
+![Application azwi-test federated credentials list](./.img/application-federated-credentials.png)
+![Application azwi-test federated credential](./.img/application-federated-credential-edit.png)
+![KeyVault secret](./.img/keyvault-secret.png)
+![KeyVault secret permission model](./.img/keyvault-access-configuration-permission-model.png)
+![KeyVault secret access policies for myself](./.img/kayvault-access-policies.png)
+
 ```sh
 export AZURE_TENANT_ID="$(az account show -s 91be5643-3357-4cb7-b6c1-49fb2f53c126 --query tenantId -otsv)"
 helm repo add azure-workload-identity https://azure.github.io/azure-workload-identity/charts
