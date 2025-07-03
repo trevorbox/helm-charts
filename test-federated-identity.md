@@ -362,6 +362,20 @@ status:
     name: oauth-openshift
 ```
 
+set the jwks-uri override in...
+
+```yaml
+apiVersion: operator.openshift.io/v1
+kind: KubeAPIServer
+metadata:
+ name: cluster
+spec:
+  unsupportedConfigOverrides:
+    apiServerArguments:
+      service-account-jwks-uri:
+        - 'https://example.com/whatever'
+```
+
 You get the expected result... 
 ```sh
 E0701 23:32:51.310663       1 main.go:60] "failed to get secret from keyvault" err=<
