@@ -1,15 +1,15 @@
 istioCNI:
-  version: v1.24.3
+  version: v1.24.6
   namespace: istio-cni
 # https://istio.io/latest/docs/setup/upgrade/canary/
 istioRevisionTags: 
   # https://istio.io/latest/docs/setup/upgrade/canary/#default-tag
   default:
-    istioRevision: default-v1-24-3
+    istioRevision: default-v1-24-6
   # stable:
-  #   istioRevision: stable-v1-24-3
+  #   istioRevision: stable-v1-24-6
   # canary:
-  #   istioRevision: canary-v1-24-3
+  #   istioRevision: canary-v1-24-6
 revisions:
   - name: default
     spec:
@@ -68,7 +68,7 @@ revisions:
                 port: 4317
           outboundTrafficPolicy:
             mode: REGISTRY_ONLY # ALLOW_ANY
-      version: v1.24.3
+      version: v1.24.6
   # - name: canary
   #   spec:
   #     namespace: istio-system
@@ -125,7 +125,7 @@ revisions:
   #               port: 4317
   #         outboundTrafficPolicy:
   #           mode: REGISTRY_ONLY # ALLOW_ANY
-  #     version: v1.24.3
+  #     version: v1.24.6
   # - name: stable
   #   spec:
   #     namespace: istio-system
@@ -182,4 +182,4 @@ revisions:
   #               port: 4317
   #         outboundTrafficPolicy:
   #           mode: REGISTRY_ONLY # ALLOW_ANY
-  #     version: v1.24.3
+  #     version: v1.24.6
