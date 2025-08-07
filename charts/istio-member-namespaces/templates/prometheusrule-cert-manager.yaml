@@ -1,0 +1,12 @@
+{{- if .Values.userWorkloadAccess.enabled }}
+{{- range .Values.members }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: cert-manager
+  namespace: {{ . }}
+spec:
+  {{- $.Files.Get "alerts/cert-manager.yaml" | nindent 2 }}
+{{- end }}
+{{- end }}
