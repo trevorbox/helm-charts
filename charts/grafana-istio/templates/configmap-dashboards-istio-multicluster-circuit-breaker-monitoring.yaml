@@ -1,0 +1,26 @@
+{{- range $path, $_ :=  .Files.Glob  "dashboards/custom/**.json" }}    
+{{ $configMapName := $path | trimPrefix "dashboards/custom/" | trimSuffix ".json" }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $configMapName }}
+data:
+  json: |-
+    {{- $.Files.Get $path | replace "\"uid\": \"${DS_PROMETHEUS}\"" "\"datasource\": \"Prometheus\"" | nindent 4 }}
+...
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: {{ $configMapName }}
+spec:
+  folder: cert-manager
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  configMapRef:
+    name: {{ $configMapName }}
+    key: json
+...
+{{ end }}
