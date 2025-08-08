@@ -175,6 +175,16 @@ entries:
   grafana-istio:
   - apiVersion: v2
     appVersion: 1.20.8
+    created: "2025-08-08T23:47:17.296673829Z"
+    description: A Helm chart for Kubernetes
+    digest: 678a8b78133de402dfd99259bc0575fb8b2039b4e97795f0f9c7865d27ad91c6
+    name: grafana-istio
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/grafana-istio-1.21.2/grafana-istio-1.21.2.tgz
+    version: 1.21.2
+  - apiVersion: v2
+    appVersion: 1.20.8
     created: "2025-08-07T00:25:00.104238653Z"
     description: A Helm chart for Kubernetes
     digest: 03bf4aa28fcae01fef4f60c5c4575be2aae9bfd84431e351d743abfcfab45a71
@@ -1278,4 +1288,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-07T00:25:00.104939621Z"
+generated: "2025-08-08T23:47:17.296970011Z"
