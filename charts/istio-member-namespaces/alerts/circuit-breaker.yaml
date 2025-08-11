@@ -1,19 +1,55 @@
-"groups":
-- "name": "circuit-breaker"
-  "rules":
-  - "alert": "CircuitBreakerTripped"
-    "annotations":
-      "description": |-
-        "The circuit was tripped and the request was routed to another cluster. The responses are apparently successful (not 5xx server error codes). You still should investigate why the circuit was tripped."      
-          "VALUE = {{ $value }}"
-          "LABELS = {{ $labels }}"  
-      "source_app": "{{ $labels.source_app }}"
-      "destination_cluster": "{{ $labels.destination_cluster }}"
-      "destination_service": "{{ $labels.destination_service }}"
-      "response_code": "{{ $labels.response_code }}"
-      "response_flags": "{{ $labels.response_flags }}"
-      "summary": "Traffic has been redirected to a different cluster, but is apparently working"
-    "expr": "sum(irate(istio_requests_total{response_code!~\"5.*\", destination_cluster!~\"$source_cluster\"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app) > 0"
-    "for": "1m"
-    "labels":
-      "severity": "warning"
+groups:
+- name: istio:circuit_breaker
+  interval: 10s
+  rules:
+  - record: istio:circuit_breaker:external_requests
+    expr: |
+      istio_requests_total
+      unless ignoring(__dst__)
+      (label_replace(istio_requests_total, "__dst__", "$1", "source_cluster", "(.*)") == label_replace(istio_requests_total, "__dst__", "$1", "destination_cluster", "(.*)"))
+- name: circuit-breaker
+  rules:
+  - alert: CircuitBreakerTripped
+    annotations:
+      description: |-
+        The circuit was tripped and the request was routed to another cluster. The responses are apparently successful (not 5xx server error codes). You still should investigate why the circuit was tripped.  
+          VALUE = {{ $value }}
+          LABELS = {{ $labels }}
+      source_app: |-
+        {{ $labels.source_app }}
+      destination_cluster: |-
+        {{ $labels.destination_cluster }}
+      destination_service: |- 
+        {{ $labels.destination_service }}
+      response_code: |-
+        {{ $labels.response_code }}
+      response_flags: |-
+        {{ $labels.response_flags }}
+      summary: Traffic has been redirected to a different cluster, but is apparently working
+    expr: |-
+      sum(irate(istio:circuit_breaker:external_requests{response_code!~"5.*"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: CircuitBreakerTrippedAndFailing
+    annotations:
+      description: |-
+        The circuit was tripped and the request was routed to another cluster. The responses are apparently unsuccessful (5xx server error codes). You are most likely experiencing downtime.
+          VALUE = {{ $value }}
+          LABELS = {{ $labels }}
+      source_app: |-
+        {{ $labels.source_app }}
+      destination_cluster: |-
+        {{ $labels.destination_cluster }}
+      destination_service: |- 
+        {{ $labels.destination_service }}
+      response_code: |-
+        {{ $labels.response_code }}
+      response_flags: |-
+        {{ $labels.response_flags }}
+      summary: Traffic has been redirected to a different cluster, but is apparently working
+    expr: |-
+      sum(irate(istio:circuit_breaker:external_requests{response_code=~"5.*"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app) > 0
+    for: 1m
+    labels:
+      severity: critical
