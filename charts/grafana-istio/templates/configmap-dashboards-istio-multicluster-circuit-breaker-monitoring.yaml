@@ -15,7 +15,7 @@ kind: GrafanaDashboard
 metadata:
   name: {{ $configMapName }}
 spec:
-  folder: cert-manager
+  folder: custom
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
