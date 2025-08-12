@@ -40,4 +40,4 @@ groups:
       ) > 0
     for: 5m
     labels:
-      severity: critical
+      severity: warning
