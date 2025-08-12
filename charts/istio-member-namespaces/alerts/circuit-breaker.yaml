@@ -48,7 +48,7 @@ groups:
         {{ $labels.response_code }}
       response_flags: |-
         {{ $labels.response_flags }}
-      summary: Traffic has been redirected to a different cluster, but is apparently working
+      summary: Traffic has been redirected to a different cluster, but is apparently NOT working
     expr: |-
       sum(istio:circuit_breaker:external_requests:rate1m{response_code=~"5.*"}) by (destination_cluster, destination_service, response_code, response_flags, source_app) > 0
     for: 1m
