@@ -5,9 +5,39 @@ groups:
     annotations:
       description: |-
         New or updated certificates will not be able to be issued until all cert-manager components are available.
+        VALUE = {{ $value }}
+        LABELS = {{ $labels }}
       summary: Cert Manager component(s) disappeared from Prometheus service discovery.
     expr: |-
        absent(up{job="cert-manager"}) or absent(up{job="cert-manager-cainjector"}) or absent(up{job="cert-manager-webhook", namespace="sample"})
     for: 10m
+    labels:
+      severity: critical
+  - alert: CertManagerHittingRateLimits
+    annotations:
+      description: |-
+        Depending on the rate limit, cert-manager may be unable to generate certificates.
+        VALUE = {{ $value }}
+        LABELS = {{ $labels }}
+      summary: Cert manager hitting rate limits from issuer.
+    expr: |-
+      sum by (host, path, method, status) (
+        rate(certmanager_http_acme_client_request_count{status="429"}[5m])
+      ) > 0
+    for: 5m
+    labels:
+      severity: critical
+  - alert: CertManagerUnsuccessfulAcmeIssuerRequests
+    annotations:
+      description: |-
+        Depending on the ACME issuer availability and configuration, cert-manager may be unable to generate certificates.
+        VALUE = {{ $value }}
+        LABELS = {{ $labels }}
+      summary: Cert manager hitting rate limits from issuer.
+    expr: |-
+      sum by (host, path, method, status) (
+        rate(certmanager_http_acme_client_request_count{status!~"2.*"}[5m])
+      ) > 0
+    for: 5m
     labels:
       severity: critical
