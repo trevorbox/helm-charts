@@ -1,0 +1,13 @@
+groups:
+- name: cert-manager
+  rules:
+  - alert: CertManagerDown
+    annotations:
+      description: |-
+        New or updated certificates will not be able to be issued until all cert-manager components are available.
+      summary: Cert Manager component(s) disappeared from Prometheus service discovery.
+    expr: |-
+       absent(up{job="cert-manager"}) or absent(up{job="cert-manager-cainjector"}) or absent(up{job="cert-manager-webhook", namespace="sample"})
+    for: 10m
+    labels:
+      severity: critical
