@@ -10,7 +10,7 @@ groups:
       summary: |-
         The cert `{{ $labels.name }}` has expired since {{ $value | humanizeDuration }}.
     expr: |-
-      sum by (exported_namespace, namespace, name) 
+      sum by (exported_namespace, name) 
       (certmanager_certificate_expiration_timestamp_seconds) <= time()
     for: 1h
     labels:
@@ -25,7 +25,7 @@ groups:
       summary: |-
         The cert `{{ $labels.name }}` is {{ $value | humanizeDuration }} from expiry. It should have been renewed by now.
     expr: |-
-      sum by (exported_namespace, namespace, name)
+      sum by (exported_namespace, name)
       (certmanager_certificate_expiration_timestamp_seconds - time() <=
       (certmanager_certificate_expiration_timestamp_seconds - certmanager_certificate_renewal_timestamp_seconds) - (certmanager_certificate_expiration_timestamp_seconds - certmanager_certificate_renewal_timestamp_seconds) / 3)
     for: 1h
@@ -40,7 +40,7 @@ groups:
         LABELS = {{ $labels }}
       summary: The cert `{{ $labels.name }}` is not ready.
     expr: |-
-      max by (name, exported_namespace, namespace, condition) (
+      max by (name, exported_namespace, condition) (
         certmanager_certificate_ready_status{condition!="True"} == 1
       )
     for: 10m
