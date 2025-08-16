@@ -370,6 +370,16 @@ entries:
   istio-member-namespaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-08-16T00:40:02.105483804Z"
+    description: A Helm chart for Kubernetes
+    digest: 8f6a1d43937a06625b42750593a685910171863b744c3b1eaf7fbefc94b32c89
+    name: istio-member-namespaces
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/istio-member-namespaces-1.1.9/istio-member-namespaces-1.1.9.tgz
+    version: 1.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-08-13T22:03:04.572173027Z"
     description: A Helm chart for Kubernetes
     digest: 4ac532d971da728b287ce7346301f5bf0dab61089f00d603c2b122ef5673451d
@@ -1398,4 +1408,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-13T22:23:49.830625929Z"
+generated: "2025-08-16T00:40:02.106199236Z"
