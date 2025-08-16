@@ -1,0 +1,127 @@
+# https://istio.io/latest/docs/ops/best-practices/observability/
+# https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio#rules-alerts
+# https://karlstoney.com/federated-prometheus-to-reduce-metric-cardinality/
+# https://gist.github.com/Stono/9ad07fca8c447c3ee3ac2c8a546d8acf?ref=karlstoney.com
+groups:
+- name: istio.workload.istio_request_duration_milliseconds_bucket
+  interval: 10s
+  rules:
+  - record: workload:istio_request_duration_milliseconds_bucket:rate1m
+    expr: |
+      sum(irate(istio_request_duration_milliseconds_bucket[1m]))
+      by (
+        destination_canonical_service,
+        destination_workload_namespace,
+        source_canonical_service,
+        source_workload_namespace,
+        reporter,
+        le
+      )
+  - record: workload:istio_request_duration_milliseconds_bucket:successful:rate1m
+    expr: |
+      sum(irate(istio_request_duration_milliseconds_bucket{response_code!~"5.*"}[1m]))
+      by (
+        destination_canonical_service,
+        destination_workload_namespace,
+        source_canonical_service,
+        source_workload_namespace,
+        reporter,
+        le
+      )
+  - record: "istio:istio_request_duration_milliseconds_bucket:p99:rate1m"
+    expr: |
+      histogram_quantile(0.99,
+        sum(workload:istio_request_duration_milliseconds_bucket:rate1m)
+        by (
+          destination_canonical_service,
+          destination_workload_namespace,
+          source_canonical_service,
+          source_workload_namespace,
+          reporter,
+          le
+        )
+      )
+  - record: "istio:istio_request_duration_milliseconds_bucket:successful:p99:rate1m"
+    expr: |
+      histogram_quantile(0.99,
+        sum(workload:istio_request_duration_milliseconds_bucket:successful:rate1m)
+        by (
+          destination_canonical_service,
+          destination_workload_namespace,
+          source_canonical_service,
+          source_workload_namespace,
+          reporter,
+          le
+        )
+      )
+- name: istio-red-rate-errors-duration
+  interval: 10s
+  rules:
+  - alert: REDIstioHighTotalRequestRate
+    expr: sum(irate(istio_requests_total{}[5m])) by (source_workload, source_workload_namespace, reporter) > 100
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio high total request rate (instance  {{ $labels.instance }} )
+      description: |-
+        The workload is processing more than 100 ops/s
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }}
+  - alert: REDIstioHigh4xxErrorRate
+    expr: |-
+      sum(irate(istio_requests_total{response_code=~"4.*"}[5m])) by (source_workload, source_workload_namespace,destination_service, reporter) / sum(irate(istio_requests_total{}[5m])) by (source_workload, source_workload_namespace,destination_service, reporter) > .05
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio high 4xx error rate (instance  {{ $labels.instance }} )
+      description: |-
+        High percentage of HTTP 4xx responses in Istio (> 5%).
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }} 
+  - alert: REDIstioHigh5xxErrorRate
+    expr: |-
+      sum(irate(istio_requests_total{response_code=~"5.*"}[5m])) by (source_workload, source_workload_namespace,destination_service, reporter) / sum(irate(istio_requests_total{}[5m])) by (source_workload, source_workload_namespace,destination_service, reporter) > .05
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio high 5xx error rate (instance  {{ $labels.instance }} )
+      description: |-
+        High percentage of HTTP 5xx responses in Istio (> 5%).
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }} 
+  - alert: REDIstioHighRequestLatency
+    expr: sum(rate(istio_request_duration_milliseconds_sum{}[1m])) by (source_workload, source_workload_namespace,destination_service, reporter) / sum(rate(istio_request_duration_milliseconds_count{}[1m])) by (source_workload, source_workload_namespace,destination_service, reporter) > 100
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio high request latency (instance  {{ $labels.instance }} )
+      description: |-
+        Istio average requests execution is longer than 100ms.
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }} 
+  - alert: REDIstioLatency99Percentile
+    expr: (istio:istio_request_duration_milliseconds_bucket:p99:rate1m / 1000) > 1
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio latency 99 percentile (instance  {{ $labels.instance }} )
+      description: |-
+        Istio 1% slowest requests are longer than 1s.
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }} 
+  - alert: REDIstioLatency99PercentileSuccessful
+    expr: (istio:istio_request_duration_milliseconds_bucket:successful:p99:rate1m / 1000) > 1
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Istio latency 99 percentile (instance  {{ $labels.instance }} )
+      description: |-
+        Istio 1% slowest successful requests are longer than 1s.
+          VALUE =  {{ $value }} 
+          LABELS =  {{ $labels }}
