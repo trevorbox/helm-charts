@@ -239,7 +239,7 @@
               "uid": "${DS_PROMETHEUS}"
             },
             "editorMode": "code",
-            "expr": "sum(irate(istio_requests_total{namespace=~\"$namespace\",source_cluster=~\"$source_cluster\", destination_cluster!~\"$source_cluster\", source_app=~\"$source_app\", destination_service=~\"$destination_service\", response_code=~\"$response_code\", response_flags=~\"$response_flags\", response_code=~\"5.*\"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app)",
+            "expr": "sum(irate(istio_requests_total{namespace=~\"$namespace\",source_cluster=~\"$source_cluster\", destination_cluster!~\"$source_cluster\", source_app=~\"$source_app\", destination_service=~\"$destination_service\", response_flags=~\"$response_flags\", response_code=~\"5.*\"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app)",
             "instant": true,
             "legendFormat": "__auto",
             "range": true,
@@ -337,7 +337,7 @@
               "uid": "${DS_PROMETHEUS}"
             },
             "editorMode": "code",
-            "expr": "sum(irate(istio_requests_total{namespace=~\"$namespace\",source_cluster=~\"$source_cluster\", destination_cluster!~\"$source_cluster\", source_app=~\"$source_app\", destination_service=~\"$destination_service\", response_code=~\"$response_code\", response_flags=~\"$response_flags\", response_code!~\"5.*\"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app)",
+            "expr": "sum(irate(istio_requests_total{namespace=~\"$namespace\",source_cluster=~\"$source_cluster\", destination_cluster!~\"$source_cluster\", source_app=~\"$source_app\", destination_service=~\"$destination_service\", response_flags=~\"$response_flags\", response_code!~\"5.*\"}[1m])) by (destination_cluster, destination_service, response_code, response_flags, source_app)",
             "instant": true,
             "legendFormat": "__auto",
             "range": true,
