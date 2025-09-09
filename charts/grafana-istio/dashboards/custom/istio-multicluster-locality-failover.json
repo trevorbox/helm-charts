@@ -153,6 +153,7 @@
         "y": 0
       },
       "id": 4,
+      "interval": "1m",
       "links": [
         {
           "targetBlank": true,
