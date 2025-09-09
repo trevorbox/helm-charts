@@ -64,7 +64,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "This panel provide a view of requests directed to clusters other than Source Cluster selected above.",
+      "description": "This panel provides a view of requests directed to clusters other than Source Cluster selected above.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -153,7 +153,6 @@
         "y": 0
       },
       "id": 4,
-      "interval": "5m",
       "links": [
         {
           "targetBlank": true,
