@@ -3,5 +3,6 @@ apiVersion: sailoperator.io/v1
 metadata:
   name: default
 spec:
-  namespace: {{ .Values.istioCNI.namespace }}
-  version: {{ .Values.istioCNI.version }}
+{{- with .Values.istioCNI.spec }}
+  {{- . | toYaml | nindent 2}}
+{{- end }}
