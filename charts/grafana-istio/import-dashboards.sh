@@ -1,7 +1,7 @@
 # The version of Istio to deploy
-VERSION=1.20.8
+VERSION=1.26.4
 # Import all Istio dashboards
-for DASHBOARD in 7639 11829 7636 7630 7645 13277; do
+for DASHBOARD in 7639 11829 7636 7630 7645 13277 21306; do
     REVISION="$(curl -s https://grafana.com/api/dashboards/${DASHBOARD}/revisions -s | jq ".items[] | select(.description | contains(\"${VERSION}\")) | .revision")"
     curl -s https://grafana.com/api/dashboards/${DASHBOARD}/revisions/${REVISION}/download > /tmp/dashboard.json
     
