@@ -1,0 +1,52 @@
+# taken from https://github.com/istio/tools/blob/master/perf/stability/alertmanager/prometheusrule.yaml
+groups:
+- name: ./infra.rules
+  rules:
+    - alert: IstiodContainerCPUUsageHigh
+      expr: (sum(rate(container_cpu_usage_seconds_total{namespace="istio-system", container="discovery"}[5m])) BY (pod) * 100) > 80
+      for: 5m
+      annotations:
+        summary: "Istiod Container CPU usage (namespace {{ $labels.namespace }}) (pod {{ $labels.pod }}) (container {{ $labels.container }}) VALUE = {{ $value }}\n"
+        description: "Isitod Container CPU usage is above 80%"
+    - alert: IstiodMemoryUsageHigh
+      expr: (sum(container_memory_working_set_bytes{namespace="istio-system", container="discovery"}) BY (pod)  / (sum(container_spec_memory_limit_bytes{namespace="istio-system", container="discovery"}) BY (pod) > 0)* 100) > 80
+      for: 5m
+      annotations:
+        summary: "Istiod Container Memory usage (namespace {{ $labels.namespace }}) (pod {{ $labels.pod }}) (container {{ $labels.container }}) VALUE = {{ $value }}\n"
+        description: "Istiod Container Memory usage is above 80%"
+    - alert: IstiodMemoryUsageIncreaseRateHigh
+      expr: sum(deriv(container_memory_working_set_bytes{namespace="istio-system",pod=~"istiod-.*"}[60m])) > 1000
+      for: 300m
+      annotations:
+        summary: "Istiod Container Memory usage increase rate high, VALUE = {{ $value }}\n"
+        description: "Istiod Container Memory usage increases more than 1k Bytes/sec"
+- name: ./controlplane.rules
+  rules:
+    - alert: IstiodxdsPushErrorsHigh
+      annotations:
+        summary: 'istiod push errors is too high'
+        description: 'istiod push error rate is higher than 0.05'
+      expr: >
+        sum(irate(pilot_xds_push_errors{app="istiod"}[5m])) / sum(irate(pilot_xds_pushes{app="istiod"}[5m])) > 0.05
+      for: 5m
+    - alert: IstiodxdsRejectHigh
+      annotations:
+        summary: 'istiod rejects rate is too high'
+        description: 'istiod rejects rate is higher than 0.05'
+      expr: >
+        sum(irate(pilot_total_xds_rejects{app="istiod"}[5m])) / sum(irate(pilot_xds_pushes{app="istiod"}[5m])) > 0.05
+      for: 5m
+    - alert: IstiodContainerNotReady
+      annotations:
+        summary: 'istiod container not ready'
+        description: 'container: discovery not running'
+      expr: >
+        kube_pod_container_status_running{namespace="istio-system", container="discovery", component=""} == 0
+      for: 5m
+    - alert: IstiodUnavailableReplica
+      annotations:
+        summary: 'Istiod unavailable pod'
+        description: 'Istiod unavailable replica > 0'
+      expr: >
+        kube_deployment_status_replicas_unavailable{deployment="istiod", component=""} > 0
+      for: 5m
