@@ -7,46 +7,77 @@ groups:
       for: 5m
       annotations:
         summary: "Istiod Container CPU usage (namespace {{ $labels.namespace }}) (pod {{ $labels.pod }}) (container {{ $labels.container }}) VALUE = {{ $value }}\n"
-        description: "Isitod Container CPU usage is above 80%"
+        description: "Isitod Container CPU usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      labels:
+        severity: warning
     - alert: IstiodMemoryUsageHigh
       expr: (sum(container_memory_working_set_bytes{namespace="istio-system", container="discovery"}) BY (pod)  / (sum(container_spec_memory_limit_bytes{namespace="istio-system", container="discovery"}) BY (pod) > 0)* 100) > 80
       for: 5m
       annotations:
         summary: "Istiod Container Memory usage (namespace {{ $labels.namespace }}) (pod {{ $labels.pod }}) (container {{ $labels.container }}) VALUE = {{ $value }}\n"
-        description: "Istiod Container Memory usage is above 80%"
+        description: "Istiod Container Memory usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      labels:
+        severity: warning
     - alert: IstiodMemoryUsageIncreaseRateHigh
       expr: sum(deriv(container_memory_working_set_bytes{namespace="istio-system",pod=~"istiod-.*"}[60m])) > 1000
       for: 300m
       annotations:
         summary: "Istiod Container Memory usage increase rate high, VALUE = {{ $value }}\n"
-        description: "Istiod Container Memory usage increases more than 1k Bytes/sec"
+        description: "Istiod Container Memory usage increases more than 1k Bytes/sec\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      labels:
+        severity: warning
 - name: ./controlplane.rules
   rules:
-    - alert: IstiodxdsPushErrorsHigh
-      annotations:
-        summary: 'istiod push errors is too high'
-        description: 'istiod push error rate is higher than 0.05'
-      expr: >
-        sum(irate(pilot_xds_push_errors{app="istiod"}[5m])) / sum(irate(pilot_xds_pushes{app="istiod"}[5m])) > 0.05
-      for: 5m
-    - alert: IstiodxdsRejectHigh
+    - alert: IstiodXdsRejectHigh
       annotations:
         summary: 'istiod rejects rate is too high'
-        description: 'istiod rejects rate is higher than 0.05'
+        description: 'istiod rejects rate is higher than 0.05\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
       expr: >
-        sum(irate(pilot_total_xds_rejects{app="istiod"}[5m])) / sum(irate(pilot_xds_pushes{app="istiod"}[5m])) > 0.05
-      for: 5m
+        sum(irate(pilot_total_xds_rejects{app="istiod"}[1m])) / sum(irate(pilot_xds_pushes{app="istiod"}[1m])) > 0.05
+      for: 1m
+      labels:
+        severity: warning
+    - alert: IstiodXdsRejectHighLast30m
+      annotations:
+        summary: 'Istiod rejects in last 30 minutes (type {{ $labels.type }})'
+        description: 'Istiod rejects in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+      expr: >
+        pilot_total_xds_rejects{app="istiod"} - pilot_total_xds_rejects{app="istiod"} offset 30m > 0
+      for: 1m
+      labels:
+        severity: warning      
     - alert: IstiodContainerNotReady
       annotations:
-        summary: 'istiod container not ready'
-        description: 'container: discovery not running'
+        summary: 'Istiod container not ready'
+        description: 'container: discovery not running\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
       expr: >
         kube_pod_container_status_running{namespace="istio-system", container="discovery", component=""} == 0
       for: 5m
+      labels:
+        severity: critical
     - alert: IstiodUnavailableReplica
       annotations:
         summary: 'Istiod unavailable pod'
-        description: 'Istiod unavailable replica > 0'
+        description: 'Istiod unavailable replica > 0\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
       expr: >
         kube_deployment_status_replicas_unavailable{deployment="istiod", component=""} > 0
       for: 5m
+      labels:
+        severity: warning
+    - alert: IstiodDuplicateEnvoyClusters
+      expr: sum(rate(pilot_duplicate_envoy_clusters{}[5m])) > 0
+      for: 1m
+      labels:
+        severity: warning
+      annotations:
+        summary: Istiod duplicate envoy clusters (instance {{ $labels.instance }})
+        description: "Istiod duplicate envoy clusters caused by service entries with same hostname.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: IstiodXDSInternalError
+      annotations:
+          summary: "Istiod XDS internal error"
+          descripription: "Istiod XDS internal error occured in last 30m"
+      expr: >
+        pilot_total_xds_internal_errors - pilot_total_xds_internal_errors offset 30m > 0
+      for: 1m
+      labels:
+        severity: warning
