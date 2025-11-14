@@ -4,11 +4,16 @@ groups:
   rules:
   - alert: IstiodXdsRejectHighRate
     annotations:
-      summary: "Istiod xds rejects rate > 5%"
+      summary: "Istiod xds rejects rate by type > 0%"
       description: "Rate of number of XDS responses from pilot rejected by proxy\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      sum(irate(pilot_total_xds_rejects{app="istiod"}[1m])) / sum(irate(pilot_xds_pushes{app="istiod"}[1m])) > 0.05
-    for: 5m
+    expr: |-
+      round(
+        100 *
+          sum(rate(pilot_total_xds_rejects{app="istiod"}[1m])) by (container,pod,type)
+            /
+          sum(rate(pilot_xds_pushes{app="istiod"}[1m])) by (container,pod,type)
+      ) > 0
+    for: 1m
     labels:
       severity: warning
   - alert: IstiodXdsRejects
