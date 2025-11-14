@@ -4,27 +4,80 @@ groups:
   rules:
   - alert: IstiodXdsRejectHighRate
     annotations:
-      summary: "Istiod xds rejects rate by type > 0%"
+      summary: "Istiod xds rejects rate increased"
       description: "Rate of number of XDS responses from pilot rejected by proxy\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
     expr: |-
       round(
-        100 *
-          sum(rate(pilot_total_xds_rejects{app="istiod"}[1m])) by (container,pod,type)
-            /
-          sum(rate(pilot_xds_pushes{app="istiod"}[1m])) by (container,pod,type)
+        100 * increase(pilot_total_xds_rejects{app="istiod"}[5m]) / increase(pilot_xds_pushes{app="istiod"}[5m])
       ) > 0
     for: 1m
     labels:
       severity: warning
-  - alert: IstiodXdsRejects
+  - alert: IstiodDuplicateEnvoyClusters
     annotations:
-      summary: "Istiod xds rejects in last 30 minutes"
-      description: "XDS responses from pilot rejected by proxy in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      summary: "Istiod duplicate envoy clusters"
+      description: "Istiod duplicate envoy clusters caused by service entries with same hostname\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
     expr: >
-      pilot_total_xds_rejects{app="istiod"} - pilot_total_xds_rejects{app="istiod"} offset 30m > 0
-    for: 5m
+      sum(rate(pilot_duplicate_envoy_clusters{}[5m])) > 0
+    for: 1m
     labels:
-      severity: warning      
+      severity: warning    
+  - alert: IstiodXDSInternalError
+    annotations:
+      summary: "Istiod XDS internal error"
+      description: "Istiod XDS internal errors increased\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(pilot_total_xds_internal_errors[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: IstiodJWKSResolverNetworkFetchFail
+    annotations:
+      summary: "Istiod jwks resolver failure"
+      description: "Total number of failed network fetch by pilot jwks resolver increased in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(pilot_jwks_resolver_network_fetch_fail_total[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: IstiodSDSCertificateErrors
+    annotations:
+      summary: "Istiod SDS certificate errors"
+      description: "Total number of failures to fetch SDS key and certificate increased in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(pilot_sds_certificate_errors_total[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: IstiodSidecarInjectionFailure
+    annotations:
+      summary: "Istiod failed sidecar injection"
+      description: "Total number of failed sidecar injection requests increased in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(sidecar_injection_failure_total[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: IstiodWebhookPatchFailure
+    annotations:
+      summary: "Istiod webhook patching total failures"
+      description: "Webhook patching total failures increased in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(webhook_patch_failures_total[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+  - alert: IstiodConfigRejects
+    annotations:
+      summary: "Istiod rejected configs"
+      description: "Total number of configs that Pilot had to reject or ignore increased in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    expr: >
+      increase(pilot_total_rejected_configs[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+- name: istiod-infra
+  rules:
   - alert: IstiodContainerNotReady
     annotations:
       summary: "Istiod container not ready"
@@ -45,74 +98,10 @@ groups:
       severity: critical
   - alert: IstiodContainerRestart
     annotations:
-      summary: "Istiod container restarted in last 30 minutes"
-      description: "Container: discovery restarted in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      summary: "Istiod container restarted recently"
+      description: "Container: discovery restarted in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
     expr: >
-      kube_pod_container_status_restarts_total{container="discovery"} - kube_pod_container_status_restarts_total{container="discovery"} offset 30m > 0
-    for: 5m
+      increase(kube_pod_container_status_restarts_total{container="discovery"}[5m]) > 0
+    for: 1m
     labels:
-      severity: warning
-  - alert: IstiodDuplicateEnvoyClusters
-    annotations:
-      summary: "Istiod duplicate envoy clusters"
-      description: "Istiod duplicate envoy clusters caused by service entries with same hostname\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      sum(rate(pilot_duplicate_envoy_clusters{}[5m])) > 0
-    for: 5m
-    labels:
-      severity: warning    
-  - alert: IstiodXDSInternalError
-    annotations:
-      summary: "Istiod XDS internal error"
-      description: "Istiod XDS internal error occurred in last 30m\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      pilot_total_xds_internal_errors - pilot_total_xds_internal_errors offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
-  - alert: IstiodJWKSResolverNetworkFetchFail
-    annotations:
-      summary: "Istiod jwks resolver failure"
-      description: "Total number of failed network fetch by pilot jwks resolver > 0 in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      pilot_jwks_resolver_network_fetch_fail_total - pilot_jwks_resolver_network_fetch_fail_total offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
-  - alert: IstiodSDSCertificateErrors
-    annotations:
-      summary: "Istiod SDS certificate errors"
-      description: "Total number of failures to fetch SDS key and certificate > 0 in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      pilot_sds_certificate_errors_total - pilot_sds_certificate_errors_total offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
-  - alert: IstiodSidecarInjectionFailure
-    annotations:
-      summary: "Istiod failed sidecar injection"
-      description: "Total number of failed sidecar injection requests > 0 in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      sidecar_injection_failure_total - sidecar_injection_failure_total offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
-  - alert: IstiodWebhookPatchFailure
-    annotations:
-      summary: "Istiod webhook patching total failures"
-      description: "Webhook patching total failures > 0 in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      webhook_patch_failures_total - webhook_patch_failures_total offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
-  - alert: IstiodConfigRejects
-    annotations:
-      summary: "Istiod rejected configs"
-      description: "Total number of configs that Pilot had to reject or ignore > 0 in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-    expr: >
-      pilot_total_rejected_configs - pilot_total_rejected_configs offset 30m > 0
-    for: 5m
-    labels:
-      severity: warning
- 
+      severity: critical

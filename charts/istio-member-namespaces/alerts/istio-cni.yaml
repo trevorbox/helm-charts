@@ -1,5 +1,5 @@
 groups:
-- name: istio-cni-rules
+- name: istio-cni-infra-rules
   rules:
   - alert: IstioCNIContainerNotReady
     annotations:
@@ -10,13 +10,13 @@ groups:
     for: 5m
     labels:
       severity: critical
-  - alert: IstioCNIContainerRestartLast30minutes
+  - alert: IstioCNIContainerRestart
     annotations:
-      summary: 'Istio CNI container restarted in last 30 minutes'
-      description: 'Container: install-cni restarted in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+      summary: 'Istio CNI container restarted recently'
+      description: 'Container: install-cni restarted in last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
     expr: >
-      kube_pod_container_status_restarts_total{container="install-cni"} - kube_pod_container_status_restarts_total{container="install-cni"} offset 30m > 0
-    for: 5m
+      increase(kube_pod_container_status_restarts_total{container="install-cni"}[5m]) > 0
+    for: 1m
     labels:
       severity: warning
   - alert: IstioCNIDaemonSetUnavailablePodOnNode
@@ -28,6 +28,8 @@ groups:
     for: 5m
     labels:
       severity: critical
+- name: istio-cni-rules
+  rules:
   - alert: IstioCNIInstallNotReady
     annotations:
       summary: 'Istio CNI not ready on node'
