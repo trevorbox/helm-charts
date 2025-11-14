@@ -1,0 +1,11 @@
+{{- if .Values.userWorkloadAccess.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: istio-cni
+  namespace: istio-cni
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  {{- $.Files.Get "alerts/istio-cni.yaml" | nindent 2 }}
+{{- end }}

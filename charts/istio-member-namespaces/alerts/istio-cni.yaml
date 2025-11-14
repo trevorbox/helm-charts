@@ -1,0 +1,40 @@
+groups:
+- name: istio-cni-rules
+  rules:
+  - alert: IstioCNIContainerNotReady
+    annotations:
+      summary: 'Istio CNI container not ready'
+      description: 'Container: install-cni not running\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+    expr: >
+      kube_pod_container_status_ready{container="install-cni"} == 0
+    for: 5m
+    labels:
+      severity: critical
+  - alert: IstioCNIContainerRestartLast30minutes
+    annotations:
+      summary: 'Istio CNI container restarted in last 30 minutes'
+      description: 'Container: install-cni restarted in last 30 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+    expr: >
+      kube_pod_container_status_restarts_total{container="install-cni"} - kube_pod_container_status_restarts_total{container="install-cni"} offset 30m > 0
+    for: 5m
+    labels:
+      severity: warning
+  - alert: IstioCNIDaemonSetUnavailablePodOnNode
+    annotations:
+      summary: 'Istio CNI DaemonSet unavailable pod'
+      description: 'Istio CNI DaemonSet has unavailable pod on node > 0\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+    expr: >
+      kube_daemonset_status_number_unavailable{daemonset="istio-cni-node"} > 0
+    for: 5m
+    labels:
+      severity: critical
+  - alert: IstioCNIInstallNotReady
+    annotations:
+      summary: 'Istio CNI not ready on node'
+      description: 'Istio CNI installation not ready on node\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}'
+    expr: >
+      istio_cni_install_ready{container="install-cni"} == 0
+    for: 5m
+    labels:
+      severity: critical
+ 
