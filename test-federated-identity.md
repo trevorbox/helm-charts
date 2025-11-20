@@ -236,9 +236,9 @@ oc adm policy add-scc-to-user privileged -z azure-wi-webhook-admin -n azure-work
 
 curl -sL https://github.com/Azure/azure-workload-identity/releases/download/v1.5.1/azure-wi-webhook.yaml | envsubst | kubectl apply -f -
 # environment variables for the Azure Key Vault resource
-export KEYVAULT_NAME="azwi-kv-$(openssl rand -hex 2)"
+export KEYVAULT_NAME="azwi-kv-new"
 export KEYVAULT_SECRET_NAME="my-secret"
-export RESOURCE_GROUP="azwi-quickstart-$(openssl rand -hex 2)"
+export RESOURCE_GROUP="azwi-quickstart-new"
 export LOCATION="westus2"
 
 # environment variables for the AAD application
@@ -284,6 +284,8 @@ azwi serviceaccount create phase sa \
   --aad-application-name "${APPLICATION_NAME}" \
   --service-account-namespace "${SERVICE_ACCOUNT_NAMESPACE}" \
   --service-account-name "${SERVICE_ACCOUNT_NAME}"
+
+# OR
 
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
