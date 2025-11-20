@@ -16,3 +16,5 @@ networkpolicies:
   canaryUpgrades:
     enabled: true
     istioSystemNamespace: istio-system
+ambient:
+  enabled: false

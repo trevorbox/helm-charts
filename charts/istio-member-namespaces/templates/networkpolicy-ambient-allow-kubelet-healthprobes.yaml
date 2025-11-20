@@ -1,0 +1,19 @@
+{{- if .Values.ambient.enabled }}
+{{- range .Values.members }}
+# https://istio.io/latest/docs/ambient/usage/networkpolicy/#ambient-health-probes-and-kubernetes-networkpolicy
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-ingress-allow-kubelet-healthprobes
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - ipBlock:
+          cidr: 169.254.7.127/32
+  policyTypes:
+    - Ingress
+...
+{{- end }}
+{{- end }}
