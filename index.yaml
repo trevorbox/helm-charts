@@ -923,6 +923,16 @@ entries:
   openshift-oauth-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-11-20T23:39:00.331709685Z"
+    description: A Helm chart for Kubernetes
+    digest: 85fcf9939fad2b228bf96f20c7fc4d475420c8e02bc7b5719a508f752fdc4d9e
+    name: openshift-oauth-proxy
+    type: application
+    urls:
+    - https://github.com/trevorbox/helm-charts/releases/download/openshift-oauth-proxy-0.1.2/openshift-oauth-proxy-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-11T19:47:23.128640571Z"
     description: A Helm chart for Kubernetes
     digest: eab737f17198ef840f0527c29facc85459db7bf98c87a2f837c54711c0a93b73
@@ -1578,4 +1588,4 @@ entries:
     urls:
     - https://github.com/trevorbox/helm-charts/releases/download/spring-boot-demo-0.0.1/spring-boot-demo-0.0.1.tgz
     version: 0.0.1
-generated: "2025-11-20T21:52:28.828928257Z"
+generated: "2025-11-20T23:39:00.332236349Z"
