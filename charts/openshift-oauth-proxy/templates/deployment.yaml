@@ -40,8 +40,7 @@ spec:
             - '-http-address='
             - '-email-domain=*'
             - '-upstream={{ .Values.upstream }}'
-            - '-openshift-sar={"resource": "namespaces", "verb": "get"}'
-            - '-openshift-delegate-urls={"/": {"resource": "namespaces", "verb": "get"}}'
+            - {{ printf "-openshift-sar={\"resource\": \"namespaces\", \"namespace\": \"%v\", \"verb\": \"get\", \"resourceName\":\"%v\"}" .Release.Namespace .Release.Namespace | squote }}
             - '-tls-cert=/etc/tls/private/tls.crt'
             - '-tls-key=/etc/tls/private/tls.key'
             - '-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token'
