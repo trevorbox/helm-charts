@@ -1,14 +1,17 @@
 {{- if .Values.egressControl.enabled }}
+{{- range .Values.members }}
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-egress-clusternetwork-cidr
+  namespace: {{ . }}
 spec:
   podSelector: {}
   egress:
     - to:
         - ipBlock:
-            cidr: {{ .Values.egressControl.cidr }} # oc get network cluster -o=jsonpath='{.spec.clusterNetwork[0].cidr}'
+            cidr: {{ $.Values.egressControl.cidr }} # oc get network cluster -o=jsonpath='{.spec.clusterNetwork[0].cidr}'
   policyTypes:
     - Egress
+{{- end }}
 {{- end }}
