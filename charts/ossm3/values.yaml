@@ -20,7 +20,7 @@ ztunnel:
   enabled: false
   spec:
     namespace: ztunnel
-    profile: ambient
+    # profile: ambient # removed in 3.2.1 it seems
 revisions:
   - name: default
     spec:
