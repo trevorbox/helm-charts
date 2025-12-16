@@ -3,6 +3,10 @@ istioCNI:
     version: v1.26.2
     namespace: istio-cni
     # profile: ambient
+    # values:
+    #   cni:
+    #     ambient:
+    #       reconcileIptablesOnStartup: true
 # https://istio.io/latest/docs/setup/upgrade/canary/
 istioRevisionTags: 
   # https://istio.io/latest/docs/setup/upgrade/canary/#default-tag
