@@ -1,5 +1,6 @@
 {{- if .Values.egressControl.enabled }}
 {{- range .Values.members }}
+---
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -13,5 +14,6 @@ spec:
             cidr: {{ $.Values.egressControl.cidr }} # oc get network cluster -o=jsonpath='{.spec.clusterNetwork[0].cidr}'
   policyTypes:
     - Egress
+...
 {{- end }}
 {{- end }}
