@@ -59,9 +59,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+            {{- if .Values.cryostat.agent.enabled }}
             - name: cryostat-agent
               containerPort: 9977
               protocol: TCP
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /
