@@ -37,7 +37,7 @@ podLabels:
   # cryostat.io/name: cryostat
   # cryostat.io/namespace: cryostat
   # cryostat.io/container: spring-boot-demo
-  # cryostat.io/callback-port: 9977
+  # cryostat.io/callback-port: "9977"
 
 podEnv:
   # - name: CRYOSTAT_AGENT_SMART_TRIGGER_DEFINITIONS
