@@ -29,7 +29,15 @@ podAnnotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "8080"
   prometheus.io/path: "/actuator/prometheus"
+
+podLabels:
   sidecar.istio.io/inject: "true"
+  # operator injection labels
+  # cryostat.io/log-level: debug
+  # cryostat.io/name: cryostat
+  # cryostat.io/namespace: cryostat
+  # cryostat.io/container: spring-boot-demo
+  # cryostat.io/callback-port: 9977
 
 podSecurityContext: {}
   # fsGroup: 2000
