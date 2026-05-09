@@ -1,5 +1,5 @@
 # needed for jmx or cryostat agent for pod-to-pod communication when mtls is enabled
-{{- if or .Values.cryostat.jmx.enabled .Values.cryostat.agent.enabled}}
+{{- if or .Values.cryostat.headlessService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -9,20 +9,9 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    {{- if .Values.cryostat.agent.enabled }}
-    - name: cryostat-agent
-      protocol: TCP
-      appProtocol: tcp
-      port: 9977
-      targetPort: 9977
-    {{- end }}
-    {{- if .Values.cryostat.jmx.enabled }}
-    - name: jfr-jmx
-      protocol: TCP
-      appProtocol: tcp
-      port: 9091
-      targetPort: 9091
-    {{- end }}
+  {{- with .Values.cryostat.headlessService.ports }}
+    {{- . | toYaml | nindent 4 }}
+  {{- end }}
   selector:
     {{- include "spring-boot-demo.selectorLabels" . | nindent 4 }}
 {{- end }}

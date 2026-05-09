@@ -155,3 +155,16 @@ cryostat:
       - '-Dcom.sun.management.jmxremote.rmi.port=9091'
       - '-Dcom.sun.management.jmxremote.ssl=false'
       - '-Dcom.sun.management.jmxremote.authenticate=false'
+  headlessService:
+    enabled: false
+    # ports:
+    # - name: cryostat-agent
+    #   protocol: TCP
+    #   appProtocol: tcp
+    #   port: 9977
+    #   targetPort: 9977
+    # - name: jfr-jmx
+    #   protocol: TCP
+    #   appProtocol: tcp
+    #   port: 9091
+    #   targetPort: 9091
