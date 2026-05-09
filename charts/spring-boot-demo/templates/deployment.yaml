@@ -47,11 +47,16 @@ spec:
           {{- end }}
             - org.springframework.boot.loader.launch.JarLauncher    
           
-          {{- if .Values.cryostat.agent.enabled }}
-            {{- with .Values.cryostat.agent.env }}     
-          env:          
+          {{- if or .Values.cryostat.agent.enabled .Values.podEnv }}
+          env:
+            {{- with .Values.podEnv }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
+          {{- if or .Values.cryostat.agent.enabled }}
+            {{- with .Values.cryostat.agent.env }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- end }}
           {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
