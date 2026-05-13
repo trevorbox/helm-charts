@@ -45,7 +45,8 @@ spec:
               {{- toYaml . | nindent 12 }}
             {{- end }}
           {{- end }}
-            - -jar /application/application.jar  
+            - "-jar"
+            - "/application/application.jar"
           
           {{- if or .Values.cryostat.agent.enabled .Values.podEnv }}
           env:
