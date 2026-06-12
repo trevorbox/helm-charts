@@ -32,11 +32,10 @@ spec:
       version: v1
   template:
     metadata:
-      annotations:
-        sidecar.istio.io/inject: "true"
       labels:
         app: nginx-echo-headers
         version: v1
+        sidecar.istio.io/inject: "true"
     spec:
       serviceAccountName: nginx-echo-headers
       containers:
