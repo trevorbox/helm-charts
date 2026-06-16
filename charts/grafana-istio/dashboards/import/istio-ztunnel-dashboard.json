@@ -35,7 +35,7 @@
       "version": ""
     }
   ],
-  "description": "Istio Ztunnel Dashboard version 1.26.4",
+  "description": "Istio Ztunnel Dashboard version 1.28.6",
   "graphTooltip": 1,
   "panels": [
     {
