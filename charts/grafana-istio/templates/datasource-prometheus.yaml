@@ -21,7 +21,7 @@ spec:
     isDefault: true
     jsonData:
       "tlsSkipVerify": true
-      "timeInterval": "5s"
+      "timeInterval": "15s"
       httpHeaderName1: 'Authorization'
       {{- with .Values.datasource.jsonData.customQueryParameters }}
       customQueryParameters: {{ . | quote }}
