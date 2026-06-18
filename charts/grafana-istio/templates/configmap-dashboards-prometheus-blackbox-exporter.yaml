@@ -1,0 +1,26 @@
+{{- range $path, $_ :=  .Files.Glob  "dashboards/prometheus-blackbox-exporter/**.json" }}    
+{{ $configMapName := $path | trimPrefix "dashboards/prometheus-blackbox-exporter/" | trimSuffix ".json" }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $configMapName }}
+data:
+  json: |-
+    {{- $.Files.Get $path | replace "\"uid\": \"${DS_PROMETHEUS}\"" "\"datasource\": \"Prometheus\"" | nindent 4 }}
+...
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: {{ $configMapName }}
+spec:
+  folder: prometheus-blackbox-exporter
+  instanceSelector:
+    matchLabels:
+      dashboards: "grafana"
+  configMapRef:
+    name: {{ $configMapName }}
+    key: json
+...
+{{ end }}
