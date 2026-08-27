@@ -4,6 +4,14 @@
 
 replicaCount: 1
 
+# Must exceed app preStop sleep + spring.lifecycle.timeout-per-shutdown-phase (30s).
+terminationGracePeriodSeconds: 40
+
+# A Ready replacement must exist before the old pod is deleted.
+rollingUpdate:
+  maxUnavailable: 0
+  maxSurge: 1
+
 image:
   repository: quay.io/trevorbox/spring-boot-ubi9-openjdk-21
   # repository: quay.io/trevorbox/spring-boot-micro-jdk-headless
@@ -53,6 +61,32 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+
+# Fail /ready first (touch), then sleep for Istiod EDS. Sleep alone leaves Ready=true.
+# Do not set holdApplicationUntilProxyStarts or terminationDrainDuration on this app.
+lifecycle:
+  preStop:
+    exec:
+      command: ["/bin/sh", "-c", "touch /tmp/unhealthy; sleep 5"]
+
+startupProbe:
+  httpGet:
+    path: /live
+    port: http
+  periodSeconds: 2
+  failureThreshold: 30
+
+livenessProbe:
+  httpGet:
+    path: /live
+    port: http
+  periodSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: http
+  periodSeconds: 1
 
 service:
   type: ClusterIP
