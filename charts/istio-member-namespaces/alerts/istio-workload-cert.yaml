@@ -1,0 +1,11 @@
+groups:
+- name: istio-cert-monitoring
+  rules:
+    - alert: IstioCertRotationFailed
+      expr: istio_agent_cert_expiry_seconds < 36000
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Istio workload certificate rotation failing on instance {{ $labels.instance }}"
+        description: "The certificate on pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has less than 10 hours (36,000 seconds) remaining. Automatic 12-hour rotation has likely failed."
