@@ -105,3 +105,56 @@ groups:
     for: 1m
     labels:
       severity: critical
+- name: istio-certificates
+  rules:
+  - alert: IstioRootCertExpiringSoon
+    expr: |
+      (citadel_server_root_cert_expiry_timestamp - time()) / 86400 < 30
+    for: 1h
+    labels:
+      severity: critical
+    annotations:
+      summary: "Istio root CA certificate expires in less than 30 days"
+      description: "The Istio root CA certificate will expire in {{ $value | humanize }} days. Rotate the root certificate immediately."
+  - alert: IstioRootCertExpiring90Days
+    expr: |
+      (citadel_server_root_cert_expiry_timestamp - time()) / 86400 < 90
+    for: 1h
+    labels:
+      severity: warning
+    annotations:
+      summary: "Istio root CA certificate expires in less than 90 days"
+      description: "Plan root certificate rotation. Expiry in {{ $value | humanize }} days."
+  - alert: IstioCertSigningFailures
+    expr: |
+      rate(citadel_server_csr_sign_err_count[5m]) > 0
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Istio certificate signing requests are failing"
+      description: "CSR signing errors detected. Workload certificates may not be rotating properly."
+  - alert: IstioNoCertIssuance
+    expr: |
+      rate(citadel_server_success_cert_issuance_count[1h]) == 0
+      and
+      rate(citadel_server_csr_count[1h]) > 0
+    for: 30m
+    labels:
+      severity: warning
+    annotations:
+      summary: "No successful certificate issuances in the last 30 minutes"
+      description: "Istiod is receiving CSR requests but not issuing certificates."
+  - alert: IstioIntermediateCertExpiring
+    expr: |
+      (citadel_server_cert_chain_expiry_timestamp - time()) / 86400 < 7
+    for: 1h
+    labels:
+      severity: critical
+    annotations:
+      summary: "Istio intermediate CA certificate expires in less than 7 days"
+  - record: istio:cert_rotation_success_rate
+    expr: |
+      rate(citadel_server_success_cert_issuance_count[5m])
+      /
+      clamp_min(rate(citadel_server_csr_count[5m]), 1)
